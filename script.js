@@ -1,4 +1,7 @@
 const player = document.getElementById("player");
+const life = document.getElementById("life");
+const pointScore = document.getElementById("score");
+
 let speed = 8;
 let x = 600;
 let y = 200;
