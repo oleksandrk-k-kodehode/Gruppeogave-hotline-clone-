@@ -1,0 +1,14 @@
+#player {
+  position: absolute;
+  top: 200px;
+  left: 600px;
+  right: 0px;
+  color: rgb(0, 0, 0);
+}
+
+#arena {
+  background-color: rgb(163, 163, 181);
+  margin-top: 2%;
+  width: 100%;
+  height: 500px;
+}
