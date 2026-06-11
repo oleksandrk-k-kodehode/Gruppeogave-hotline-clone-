@@ -1,5 +1,5 @@
 class Person {
-    constructor(upperbody, legs, x, y, direction = "up", speed = 4, role) {
+    constructor(upperbody, x, y, direction = "up", speed = 4, role = "me") {
         this.x = x;
         this.y = y;
         this.direction = direction;
@@ -7,7 +7,7 @@ class Person {
         this.angle = 0;
 
         this.upperbodyImg = upperbody;
-        this.legsImg = legs;
+
         this.mouseX = x;
         this.mouseY = y;
 
