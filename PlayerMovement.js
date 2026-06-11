@@ -1,8 +1,8 @@
 const player = document.getElementById("player");
 
 let speed = 8;
-let x = 600;
-let y = 200;
+let x = 300;
+let y = 0;
 
 document.addEventListener("keydown", (k) => {
   if (k.code == "KeyD") {
@@ -21,6 +21,13 @@ document.addEventListener("keydown", (k) => {
     y -= speed;
     player.style.top = `${y}px`;
   }
-
-  console.log("tast:", k.code, "x:", x, "y:", y, "speed:", speed);
 });
+
+console.log("tast:", k.code, "x:", x, "y:", y, "speed:", speed);
+
+document.addEventListener("keydown", (i) => {
+  if (i.code == "Tab" || "e") {
+  }
+});
+
+console.log("tast", i.code);
