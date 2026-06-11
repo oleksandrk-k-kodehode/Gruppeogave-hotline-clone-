@@ -8,9 +8,8 @@
 
 #arena {
   background-color: rgb(163, 163, 181);
-  margin-top: 2%;
   width: 100%;
-  height: 500px;
+  height: 600px;
 }
 
 #status {
@@ -22,12 +21,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 100px;
+  gap: 80px;
   justify-content: center;
 }
 
 #status img {
-  width: 60px;
+  width: 45px;
   padding-top: 5px;
   left: 300px;
   position: relative;
