@@ -4,6 +4,7 @@
   left: 600px;
   right: 0px;
   color: rgb(0, 0, 0);
+  background-image: url(assets/player-default.png);
 }
 
 #arena {
