@@ -15,7 +15,7 @@
 #status {
   background-color: rgb(18, 18, 18);
   width: 100%;
-  top: 86%;
+  top: 90%;
   height: 70px;
   position: relative;
   display: flex;
@@ -30,4 +30,20 @@
   padding-top: 5px;
   left: 300px;
   position: relative;
+}
+
+/*----------ITEMS---------------*/
+#table img {
+  position: absolute;
+  left: 400px;
+  height: 80px;
+  width: 80px;
+}
+
+#cactus img {
+  height: 80px;
+  width: 80px;
+  left: 400px;
+  top: 300px;
+  position: absolute;
 }
