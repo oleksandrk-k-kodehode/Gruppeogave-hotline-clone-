@@ -1,4 +1,4 @@
-import { Person } from "./Person";
+import { Person } from "./Person.js";
 
 let speed = 8;
 let x = 300;

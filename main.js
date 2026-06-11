@@ -1,8 +1,7 @@
-import { Obstacle } from "./Obstacle";
+import { Obstacle } from "./Obstacle.js";
 
 const map = document.getElementById("map");
 
-const cactus = new Obstacle("80px", "80px", "./assets/cactus.png");
+const cactus = new Obstacle(40, 40, "./assets/cactus.png");
 
-const map = document.getElementById("map");
 map.append(cactus.imageElement);

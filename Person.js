@@ -12,7 +12,7 @@ class Person {
         this.mouseY = y;
 
         this.role = role;
-        [this.legs, this.upperBody] = build(this.role);
+        [this.legs, this.upperBody] = this.build(this.role);
     }
 
     build(identity) {
