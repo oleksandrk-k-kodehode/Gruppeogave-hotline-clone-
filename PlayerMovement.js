@@ -22,12 +22,3 @@ document.addEventListener("keydown", (k) => {
     player.style.top = `${y}px`;
   }
 });
-
-console.log("tast:", k.code, "x:", x, "y:", y, "speed:", speed);
-
-document.addEventListener("keydown", (i) => {
-  if (i.code == "Tab" || "e") {
-  }
-});
-
-console.log("tast", i.code);
