@@ -30,12 +30,3 @@ document.addEventListener("keydown", (k) => {
         player.move();
     }
 });
-
-console.log("tast:", k.code, "x:", x, "y:", y, "speed:", speed);
-
-document.addEventListener("keydown", (i) => {
-    if (i.code == "Tab" || "e") {
-    }
-});
-
-console.log("tast", i.code);
