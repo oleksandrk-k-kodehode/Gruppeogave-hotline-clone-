@@ -1,10 +1,10 @@
 #player {
   position: absolute;
-  top: 200px;
-  left: 600px;
+  left: -300px;
   right: 0px;
   color: rgb(0, 0, 0);
-  background-image: url(assets/player-default.png);
+  width: 60px;
+  background-image: none;
 }
 
 #arena {
@@ -14,10 +14,18 @@
   height: 500px;
 }
 
-#scoreboard {
+#status {
   background-color: rgb(18, 18, 18);
-  width: 99%;
-  top: 80%;
-  height: 100px;
-  position: absolute;
+  width: 100%;
+  top: 86%;
+  height: 70px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 300px;
+  justify-content: center;
+}
+
+#status img {
+  width: 70px;
 }
