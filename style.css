@@ -1,7 +1,6 @@
 #player {
   position: absolute;
   left: -300px;
-  right: 0px;
   color: rgb(0, 0, 0);
   width: 60px;
   background-image: none;
@@ -22,10 +21,14 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  gap: 300px;
+  align-items: center;
+  gap: 100px;
   justify-content: center;
 }
 
 #status img {
-  width: 70px;
+  width: 60px;
+  padding-top: 5px;
+  left: 300px;
+  position: relative;
 }
