@@ -12,5 +12,13 @@ class Obstacle {
   #build(image) {
     const imageElement = document.createElement("img");
     imageElement.src = image;
+
+    return imageElement;
+  }
+
+  collisions() {
+    let distanceToCharacter = distance(this.x);
   }
 }
+
+export default Obstacle;
