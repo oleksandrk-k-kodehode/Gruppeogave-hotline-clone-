@@ -8,8 +8,11 @@
 
 #map {
   background-color: rgb(163, 163, 181);
-  width: 100%;
-  height: 600px;
+  width: 1380px;
+  height: 650px;
+  box-sizing: border-box;
+  background-image: url(assets/map.png);
+  background-repeat: no-repeat;
 }
 
 #status {
@@ -36,6 +39,7 @@
 #table img {
   position: absolute;
   left: 400px;
+  top: 34px;
   height: 80px;
   width: 80px;
 }
