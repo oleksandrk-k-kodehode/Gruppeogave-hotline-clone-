@@ -1,5 +1,5 @@
 class Person {
-    constructor(upperbody, x, y, direction = "up", speed = 4, role = "me") {
+    constructor(x, y, upperbody, direction = "up", speed = 4, role = "player") {
         this.x = x;
         this.y = y;
         this.direction = direction;
@@ -12,7 +12,9 @@ class Person {
         this.mouseY = y;
 
         this.role = role;
-        [this.legs, this.upperBody] = this.build(this.role);
+        [this.entity, this.upperBody] = this.build(this.role);
+        this.entity.style.top = this.y + "px";
+        this.entity.style.left = this.x + "px";
     }
 
     build(identity) {
@@ -23,7 +25,7 @@ class Person {
         upperBody.src = this.upperbodyImg;
 
         const legs = document.createElement("div");
-        legs.id = "legs";
+        legs.id = "player";
 
         entity.append(legs, upperBody);
 

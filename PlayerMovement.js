@@ -4,7 +4,7 @@ let speed = 8;
 let x = 300;
 let y = 0;
 
-const player = new Person("./assets/player-default.png", x, y);
+// const player = new Person("./assets/player-default.png", x, y);
 
 document.addEventListener("keydown", (k) => {
     if (k.code == "KeyD") {
