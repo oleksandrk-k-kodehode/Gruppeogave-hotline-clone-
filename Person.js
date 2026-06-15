@@ -14,6 +14,7 @@ class Person {
     this.angle = 0;
 
     this.upperbodyImg = upperbody;
+    this.width = 35;
 
     this.mouseX = x;
     this.mouseY = y;
@@ -30,6 +31,8 @@ class Person {
 
     const upperBody = new Image();
     upperBody.src = this.upperbodyImg;
+    upperBody.style.height = `${this.width}px`;
+    upperBody.style.width = `${this.width}px`;
 
     const legs = document.createElement("div");
     legs.id = "player";
