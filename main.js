@@ -1,8 +1,11 @@
-import { Obstacle } from "./Obstacle";
+import { Person } from "./Person.js";
+import { Obstacle } from "./Obstacle.js";
 
 const map = document.getElementById("map");
 
-const cactus = new Obstacle("80px", "80px", "./assets/cactus.png");
-
-const map = document.getElementById("map");
-map.append(cactus.imageElement);
+const createPlayer = (map, x, y, img) => {
+    let mainFig = new Person(x, y, img);
+    map.append(mainFig.entity);
+    return mainFig;
+};
+createPlayer(map, 10, 10, "./assets/player/player-default.png");
