@@ -1,6 +1,6 @@
 /*import { Person } from "./Person.js";
 
-/*
+
 let speed = 8;
 let x = 300;
 let y = 0;
@@ -31,3 +31,4 @@ document.addEventListener("keydown", (k) => {
         player.move();
     }
 });
+*/
