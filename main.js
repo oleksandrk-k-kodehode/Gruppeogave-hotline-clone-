@@ -13,7 +13,7 @@ const player = createPlayer(map, 10, 10, "./assets/player/player-default.png");
 document.addEventListener("keydown", (e) => {
   switch (e.code) {
     case "KeyW":
-      player.direction = "forwards  ";
+      player.direction = "forwards";
       player.move();
       break;
 
