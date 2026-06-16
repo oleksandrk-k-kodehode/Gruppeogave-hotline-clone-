@@ -24,39 +24,32 @@ const createPlayer = (map, x, y, img) => {
 const player = createPlayer(map, 10, 10, "./assets/player/player-default.png");
 
 document.addEventListener("keydown", (e) => {
-  function gameLoop() {
-    switch (e.code) {
-      case "KeyW":
-      case "ArrowUp":
-        player.direction = "forwards";
-        player.move();
-        break;
+  switch (e.code) {
+    case "KeyW":
+    case "ArrowUp":
+      player.direction = "forwards";
+      player.move();
+      break;
 
-      case "KeyS":
-      case "ArrowDown":
-        player.direction = "backwards";
-        player.move();
-        break;
+    case "KeyS":
+    case "ArrowDown":
+      player.direction = "backwards";
+      player.move();
+      break;
 
-      case "KeyA":
-      case "ArrowLeft":
-        player.direction = "left";
-        player.move();
-        break;
+    case "KeyA":
+    case "ArrowLeft":
+      player.direction = "left";
+      player.move();
+      break;
 
-      case "KeyD":
-      case "ArrowRight":
-        player.direction = "right";
-        player.move();
-        break;
-    }
-
-    player.entity.style.left = player.x + "px";
-    player.entity.style.top = player.y + "px";
-
-    requestAnimationFrame(gameLoop);
+    case "KeyD":
+    case "ArrowRight":
+      player.direction = "right";
+      player.move();
+      break;
   }
-});
 
-requestAnimationFrame(gameLoop);
-gameLoop();
+  player.entity.style.left = player.x + "px";
+  player.entity.style.top = player.y + "px";
+});
