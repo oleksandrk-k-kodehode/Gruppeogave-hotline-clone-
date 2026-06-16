@@ -43,7 +43,7 @@ document.addEventListener("keyup", (k) => {
   if (k.code in keys) keys[k.code] = false;
 });
 
-document.addEventListener("mousemove", (e) => {
+document.addEventListener("click", (e) => {
   ((player.mouseX = e.pageX), (player.mouseY = e.pageY));
   player.aim();
 });
