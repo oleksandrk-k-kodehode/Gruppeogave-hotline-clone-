@@ -4,7 +4,7 @@ class Person {
     y,
     upperbody,
     direction = "forward",
-    speed = 4,
+    speed = 2,
     role = "player",
   ) {
     this.x = x;
@@ -92,6 +92,8 @@ class Person {
   shoot() {
     player.append(this.#bulletBuild());
     console.log("pew pew");
+    bullet.x += bullet.vx;
+    bullet.y += bullet.vy;
   }
 }
 
