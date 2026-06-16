@@ -1,7 +1,7 @@
 import { Person } from "./Person.js";
 import { Obstacle } from "./Obstacle.js";
 
-window.addEventListener(
+document.addEventListener(
   "keydown",
   function (e) {
     if (
@@ -15,6 +15,10 @@ window.addEventListener(
   false,
 );
 const map = document.getElementById("map");
+
+function gameloop() {
+  requestAnimationFrame;
+}
 
 const createPlayer = (map, x, y, img) => {
   let mainFig = new Person(x, y, img);
@@ -50,6 +54,10 @@ document.addEventListener("keydown", (e) => {
       break;
   }
 
+  requestAnimationFrame(gameloop);
+
   player.entity.style.left = player.x + "px";
   player.entity.style.top = player.y + "px";
 });
+
+gameloop();
