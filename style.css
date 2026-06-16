@@ -18,16 +18,18 @@
     background-color: rgb(163, 163, 181);
     width: 100svw;
     height: 100svh;
-    box-sizing: border-box;
+    box-sizing: cover;
     background-image: url(./assets/map.png);
     background-repeat: no-repeat;
+    object-fit: fill;
+    background-size: 100%;
 }
 
 #status {
     background-color: rgb(18, 18, 18);
-    width: 100%;
-    top: 90%;
-    height: 70px;
+    width: 100svw;
+    /* top: 85%; */
+    height: 80px;
     position: relative;
     display: flex;
     flex-direction: row;
