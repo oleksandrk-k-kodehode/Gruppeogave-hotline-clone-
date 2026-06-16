@@ -62,7 +62,7 @@ class Person {
     const bullet = document.createElement("div");
     bullet.id = "bullet";
     const bulletImg = new Image();
-    bulletImg.src = "./assets/";
+    bulletImg.src = "./assets/bullet.png";
     bullet.append(bulletImg);
     return bullet;
   }
@@ -89,7 +89,10 @@ class Person {
     this.upperBody.style.transform = `rotate(${rotation}deg)`;
   }
 
-  shoot() {}
+  shoot() {
+    player.append(this.#bulletBuild());
+    console.log("pew pew");
+  }
 }
 
 export { Person };
