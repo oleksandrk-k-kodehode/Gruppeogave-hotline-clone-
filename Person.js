@@ -4,7 +4,7 @@ class Person {
     y,
     upperbody,
     direction = "forward",
-    speed = 2,
+    speed = 3,
     role = "player",
   ) {
     this.x = x;
@@ -14,7 +14,7 @@ class Person {
     this.angle = 0;
 
     this.upperbodyImg = upperbody;
-    this.width = 35;
+    this.width = 50;
 
     this.mouseX = x;
     this.mouseY = y;
@@ -58,11 +58,15 @@ class Person {
     this.entity.style.left = this.x + "px";
   }
 
-  #bulletBuild() {
+  #bulletBuild(x, y, img, speed, damage, width, height) {
     const bullet = document.createElement("div");
-    bullet.id = "bullet";
+    bullet.className = "bullets";
+
     const bulletImg = new Image();
     bulletImg.src = "./assets/bullet.png";
+    bullet.style.width = `${width}px`;
+    bullet.style.height = `${height}px`;
+
     bullet.append(bulletImg);
     return bullet;
   }
@@ -92,8 +96,6 @@ class Person {
   shoot() {
     player.append(this.#bulletBuild());
     console.log("pew pew");
-    bullet.x += bullet.vx;
-    bullet.y += bullet.vy;
   }
 }
 
