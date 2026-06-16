@@ -96,6 +96,7 @@ class Person {
   shoot() {
     player.append(this.#bulletBuild());
     console.log("pew pew");
+    return;
   }
 }
 
