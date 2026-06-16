@@ -14,7 +14,7 @@ class Person {
     this.angle = 0;
 
     this.upperbodyImg = upperbody;
-    this.width = 35;
+    this.width = 50;
 
     this.mouseX = x;
     this.mouseY = y;
@@ -98,6 +98,7 @@ class Person {
 
   aim() {
     this.#trackMouse();
+    console.log(this.mouseX, this.mouseY);
   }
 
   shoot() {}
