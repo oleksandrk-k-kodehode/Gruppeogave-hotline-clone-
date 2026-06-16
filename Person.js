@@ -14,7 +14,7 @@ class Person {
     this.angle = 0;
 
     this.upperbodyImg = upperbody;
-    this.width = 50;
+    this.width = 35;
 
     this.mouseX = x;
     this.mouseY = y;
@@ -23,6 +23,8 @@ class Person {
     [this.entity, this.upperBody] = this.build(this.role);
     this.entity.style.top = this.y + "px";
     this.entity.style.left = this.x + "px";
+    this.centerX = 0;
+    this.centerY = 0;
   }
 
   build(identity) {
@@ -33,44 +35,27 @@ class Person {
     upperBody.src = this.upperbodyImg;
     upperBody.style.height = `${this.width}px`;
     upperBody.style.width = `${this.width}px`;
+    upperBody.id = "upperBody";
 
-    const legs = document.createElement("div");
-    legs.id = "player";
-
-    entity.append(legs, upperBody);
+    entity.append(upperBody);
+    entity.style.height = `${this.width}px`;
+    entity.style.width = `${this.width}px`;
 
     return [entity, upperBody];
   }
 
   move() {
-    const radians = ((this.angle - 90) * Math.PI) / 180;
-    const speed = 3;
-
     if (this.direction === "backwards") {
-      this.x -= Math.cos(radians) * speed;
-      this.y -= Math.sin(radians) * speed;
+      this.y += this.speed;
     } else if (this.direction === "forwards") {
-      this.x += Math.cos(radians) * speed;
-      this.y += Math.sin(radians) * speed;
+      this.y -= this.speed;
     } else if (this.direction === "left") {
-      this.x += Math.cos(radians - Math.PI / 2) * speed;
-      this.y += Math.sin(radians - Math.PI / 2) * speed;
+      this.x -= this.speed;
     } else if (this.direction === "right") {
-      this.x += Math.cos(radians + Math.PI / 2) * speed;
-      this.y += Math.sin(radians + Math.PI / 2) * speed;
+      this.x += this.speed;
     }
     this.entity.style.top = this.y + "px";
     this.entity.style.left = this.x + "px";
-  }
-
-  rotate(element, direction) {
-    if (direction === "left") {
-      this.angle -= 3;
-    } else if (direction === "right") {
-      this.angle += 3;
-    }
-
-    element.style.transform = `rotate(${this.angle}deg)`;
   }
 
   #bulletBuild() {
@@ -82,23 +67,26 @@ class Person {
     return bullet;
   }
 
-  #trackMouse() {
-    document.addEventListener("mouseover", (e) => {
-      ((this.mouseX = e.screenX), (this.mouseY = e.screenY));
-    });
-  }
-
   #calcDistance(y2, y1, x2, x1) {
     let deltaX = x2 - x1;
     let deltaY = y2 - y1;
     return Math.hypot(deltaX, deltaY);
   }
 
-  #calcAngle() {}
+  #calcAngle(x1, x2, y1, y2) {
+    return (Math.atan2(y2 - y1, x2 - x1) * 180) / Math.PI;
+  }
 
   aim() {
-    this.#trackMouse();
-    console.log(this.mouseX, this.mouseY);
+    this.centerX = this.x + this.width / 2;
+    this.centerY = this.y + this.width / 2;
+    let rotation = this.#calcAngle(
+      this.centerX,
+      this.mouseX,
+      this.centerY,
+      this.mouseY,
+    );
+    this.upperBody.style.transform = `rotate(${rotation}deg)`;
   }
 
   shoot() {}
