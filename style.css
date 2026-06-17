@@ -1,3 +1,10 @@
+:root {
+    --fromX: 0px;
+    --toX: 0px;
+    --fromY: 0px;
+    --toY: 0px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,12 +19,36 @@
     width: 6px;
     height: 6px;
     background-image: none;
+    display: inline-block;
+}
+
+@keyframes fly {
+    0% {
+        transform: translate(var(--fromX), var(--fromY));
+    }
+    100% {
+        transform: translate(var(--toX), var(--toY));
+    }
+}
+
+.bullet img {
+    position: absolute;
+    z-index: 10;
+}
+
+.bullet img,
+.bullet {
+    /* top: 5.5px;
+    left: 30px; */
+    width: 3px;
+    height: 1px;
+    animation-name: fly;
 }
 
 #map {
     background-color: rgb(163, 163, 181);
     width: 100svw;
-    height: 100svh;
+    height: 88svh;
     box-sizing: cover;
     background-image: url(./assets/map.png);
     background-repeat: no-repeat;
@@ -28,7 +59,6 @@
 #status {
     background-color: rgb(18, 18, 18);
     width: 100svw;
-    /* top: 85%; */
     height: 80px;
     position: relative;
     display: flex;

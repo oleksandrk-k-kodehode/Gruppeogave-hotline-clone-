@@ -25,41 +25,60 @@ const createPlayer = (map, x, y, img) => {
     map.append(mainFig.entity);
     return mainFig;
 };
-const player = createPlayer(map, 10, 10, "./assets/player/player-default.png");
+const player = createPlayer(
+    map,
+    10,
+    10,
+    "./assets/player/player-default_copy.png",
+);
 
-document.addEventListener("keydown", (e) => {
-    console.log(e.code);
-    switch (e.code) {
-        case "KeyW":
-        case "ArrowUp":
-            player.direction = "forwards";
-            player.move();
-            break;
+const keys = {
+    ArrowUp: false,
+    KeyW: false,
+    ArrowDown: false,
+    KeyS: false,
+    ArrowLeft: false,
+    KeyA: false,
+    ArrowRight: false,
+    KeyD: false,
+};
 
-        case "KeyS":
-        case "ArrowDown":
-            player.direction = "backwards";
-            player.move();
-            break;
+document.addEventListener("keydown", (k) => {
+    if (k.code in keys) keys[k.code] = true;
+    if (k.code === "Space") player.shoot();
+});
 
-        case "KeyA":
-        case "ArrowLeft":
-            player.direction = "left";
-            player.move();
-            break;
-
-        case "KeyD":
-        case "ArrowRight":
-            player.direction = "right";
-            player.move();
-            break;
-    }
-
-    player.entity.style.left = player.x + "px";
-    player.entity.style.top = player.y + "px";
+document.addEventListener("keyup", (k) => {
+    if (k.code in keys) keys[k.code] = false;
 });
 
 document.addEventListener("mousemove", (e) => {
     ((player.mouseX = e.pageX), (player.mouseY = e.pageY));
     player.aim();
 });
+
+function gameLoop() {
+    if (keys.KeyW || keys.ArrowUp) {
+        player.direction = "forwards";
+        player.move();
+    }
+    if (keys.KeyS || keys.ArrowDown) {
+        player.direction = "backwards";
+        player.move();
+    }
+    if (keys.KeyA || keys.ArrowLeft) {
+        player.direction = "left";
+        player.move();
+    }
+    if (keys.KeyD || keys.ArrowRight) {
+        player.direction = "right";
+        player.move();
+    }
+
+    player.entity.style.left = player.x + "px";
+    player.entity.style.top = player.y + "px";
+    player.aim();
+    requestAnimationFrame(gameLoop);
+}
+
+requestAnimationFrame(gameLoop);
