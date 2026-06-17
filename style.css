@@ -22,7 +22,7 @@
     display: inline-block;
 }
 
-@keyframes fly {
+/* @keyframes fly {
     0% {
         transform: translate(var(--fromX), var(--fromY));
     }
@@ -30,6 +30,11 @@
         transform: translate(var(--toX), var(--toY));
     }
 }
+
+.animation {
+    animation-name: fly;
+    animation-duration: 2s;
+} */
 
 .bullet img {
     position: absolute;
@@ -42,7 +47,6 @@
     left: 30px; */
     width: 3px;
     height: 1px;
-    animation-name: fly;
 }
 
 #map {

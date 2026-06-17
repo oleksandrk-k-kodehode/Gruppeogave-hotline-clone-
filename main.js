@@ -1,6 +1,9 @@
 import { Person } from "./Person.js";
 import { Obstacle } from "./Obstacle.js";
 
+const gunshot = new Audio("./assets/sounds/cartoon-sfx-gunshot_E_minor.wav");
+gunshot.volume = 0.1;
+
 window.addEventListener(
     "keydown",
     function (e) {
@@ -45,7 +48,11 @@ const keys = {
 
 document.addEventListener("keydown", (k) => {
     if (k.code in keys) keys[k.code] = true;
-    if (k.code === "Space") player.shoot();
+    if (k.code === "Space") {
+        player.shoot();
+        gunshot.currentTime = 0;
+        gunshot.play();
+    }
 });
 
 document.addEventListener("keyup", (k) => {
