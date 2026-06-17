@@ -23,8 +23,8 @@ class Person {
         [this.entity, this.upperBody] = this.build(this.role);
         this.entity.style.top = this.y + "px";
         this.entity.style.left = this.x + "px";
-        this.centerX = 0;
-        this.centerY = 0;
+        this.centerX = this.#calCenter(this.x, this.width);
+        this.centerY = this.#calCenter(this.y, this.width);
     }
 
     build(identity) {
@@ -58,6 +58,10 @@ class Person {
         this.entity.style.left = this.x + "px";
     }
 
+    #calCenter(height, width) {
+        return height + width / 2;
+    }
+
     #bulletBuild(
         x,
         y,
@@ -69,6 +73,7 @@ class Person {
     ) {
         const bulletImg = new Image();
         bulletImg.className = "bullet";
+        bulletImg.style.position = "absolute";
         bulletImg.src = img;
         bulletImg.style.width = `${width}px`;
         bulletImg.style.height = `${height}px`;
@@ -88,8 +93,8 @@ class Person {
     }
 
     aim() {
-        this.centerX = this.x + this.width / 2;
-        this.centerY = this.y + this.width / 2;
+        this.centerX = this.#calCenter(this.x, this.width);
+        this.centerY = this.#calCenter(this.y, this.width);
         let rotation = this.#calcAngle(
             this.centerX,
             this.mouseX,
@@ -99,14 +104,30 @@ class Person {
         this.upperBody.style.transform = `rotate(${rotation}deg)`;
     }
 
-    bulletFlight() {
-        const img = this.#bulletBuild();
-        img.id = "fly";
+    #bulletFlight() {
+        const bullet = document.querySelector(".bullet");
+        bullet.classList.remove("animation");
+        void bullet.offsetWidth; // force reflow
+        bullet.classList.add("animation");
     }
 
     shoot() {
         console.log("pew pew");
-        return;
+
+        this.aim();
+        document.documentElement.style.setProperty(
+            "--fromX",
+            this.centerX + "px",
+        );
+        document.documentElement.style.setProperty(
+            "--fromY",
+            this.centerY + "px",
+        );
+        document.documentElement.style.setProperty("--toX", this.mouseX + "px");
+        document.documentElement.style.setProperty("--toY", this.mouseY + "px");
+        this.#bulletBuild();
+
+        this.#bulletFlight();
     }
 }
 
