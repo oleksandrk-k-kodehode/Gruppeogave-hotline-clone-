@@ -1,6 +1,6 @@
 import { Seekbehaviour } from "./Seekbehaviour.js";
 import { map } from "./main.js";
-import { Person } from "./Person.js";
+import { Person } from "../Player/Person.js";
 
 const enemy = document.createElement("div");
 enemy.classList = enemy;
