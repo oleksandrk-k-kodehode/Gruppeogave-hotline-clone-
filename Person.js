@@ -98,7 +98,7 @@ class Person {
     const centerX = this.x + this.width / 2;
     const centerY = this.y + this.width / 2;
 
-    const bulletElem = this.#bulletBuild(
+    const bullet = this.#bulletBuild(
       centerX,
       centerY,
       "./assets/bullet.png",
@@ -108,21 +108,21 @@ class Person {
       10,
     );
 
-    bulletElem.style.position = "absolute";
-    bulletElem.style.left = centerX + "px";
-    bulletElem.style.top = centerY + "px";
+    bullet.style.position = "absolute";
+    bullet.style.left = centerX + "px";
+    bullet.style.top = centerY + "px";
 
     const angle = Math.atan2(this.mouseY - centerY, this.mouseX - centerX);
     const bulletSpeed = 10;
 
-    bulletElem.currentX = centerX;
-    bulletElem.currentY = centerY;
-    bulletElem.vx = Math.cos(angle) * bulletSpeed;
-    bulletElem.vy = Math.sin(angle) * bulletSpeed;
+    bullet.currentX = centerX;
+    bullet.currentY = centerY;
+    bullet.vx = Math.cos(angle) * bulletSpeed;
+    bullet.vy = Math.sin(angle) * bulletSpeed;
 
-    const mapElement = document.getElementById("map");
-    if (mapElement) mapElement.append(bulletElem);
-    return bulletElem;
+    const map = document.getElementById("map");
+    if (map) map.append(bullet);
+    return bullet;
   }
 }
 
