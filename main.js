@@ -52,7 +52,8 @@ document.addEventListener("keyup", (k) => {
 });
 
 document.addEventListener("mousemove", (e) => {
-    ((player.mouseX = e.pageX), (player.mouseY = e.pageY));
+    player.mouseX = e.pageX;
+    player.mouseY = e.pageY;
     player.aim();
 });
 
