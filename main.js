@@ -4,23 +4,6 @@ import { Obstacle } from "./Obstacle.js";
 const gunshot = new Audio("./assets/sounds/cartoon-sfx-gunshot_E_minor.wav");
 gunshot.volume = 0.1;
 
-window.addEventListener(
-    "keydown",
-    function (e) {
-        if (
-            [
-                "Space",
-                "ArrowUp",
-                "ArrowDown",
-                "ArrowLeft",
-                "ArrowRight",
-            ].indexOf(e.code) > -1
-        ) {
-            e.preventDefault();
-        }
-    },
-    false,
-);
 const map = document.getElementById("map");
 
 const createPlayer = (map, x, y, img) => {
@@ -49,14 +32,18 @@ const keys = {
 const activeBullets = [];
 
 const shoot = document.addEventListener("keydown", (k) => {
-  if (k.code in keys) keys[k.code] = true;
+    if (k.code in keys) {
+        keys[k.code] = true;
+        k.preventDefault();
+    }
 
-  if (k.code === "Space") {
-    const bullet = player.shoot();
-    if (bullet) {
-      activeBullets.push(bullet);
-      player.move(-player.direction);
-      setTimeout(() => player.shoot, 3000);
+    if (k.code === "Space") {
+        const bullet = player.shoot();
+        if (bullet) {
+            activeBullets.push(bullet);
+            player.move(-player.direction);
+            setTimeout(() => player.shoot, 3000);
+        }
     }
 });
 
@@ -65,7 +52,8 @@ document.addEventListener("keyup", (k) => {
 });
 
 document.addEventListener("mousemove", (e) => {
-    ((player.mouseX = e.pageX), (player.mouseY = e.pageY));
+    player.mouseX = e.pageX;
+    player.mouseY = e.pageY;
     player.aim();
 });
 

@@ -28,7 +28,8 @@ Altså inkluderes ikke moduler direkte, men av et hovedskript, som inkluderes me
 
 ## Forskjeller på moduler og vanlige skript
 
-- Moduler får automatisk en `defer` attribut
+- Moduler får automatisk en `defer` attributt
+- Det er mulig å bruke `await` i toppnivået på en modul, uten en `async` funksjon rundt
 - Moduler har en isolert scope, ikke samme globale scope som vanlige skript
 - Alle moduler kjører i `strict mode` med flere begrensninger og feilmeldinger enn vanlige skript
 - Regler for henting av modul-skript fra server er strengere (Cross Origin Resource Sharing)
