@@ -109,7 +109,7 @@ class Person {
     );
 
     bullet.style.position = "absolute";
-    bullet.style.left = 12000 + "px";
+    bullet.style.left = centerX + "px";
     bullet.style.top = centerY + "px";
 
     const angle = Math.atan2(this.mouseY - centerY, this.mouseX - centerX);
@@ -120,8 +120,8 @@ class Person {
     bullet.vx = Math.cos(angle) * bulletSpeed;
     bullet.vy = Math.sin(angle) * bulletSpeed;
 
-    const mapElement = document.getElementById("map");
-    if (mapElement) mapElement.append(bullet);
+    const map = document.getElementById("map");
+    if (map) map.append(bullet);
     return bullet;
   }
 }
