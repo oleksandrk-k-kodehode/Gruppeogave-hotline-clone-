@@ -24,12 +24,7 @@ const createPlayer = (map, x, y, img) => {
   map.append(mainFig.entity);
   return mainFig;
 };
-const player = createPlayer(
-  map,
-  10,
-  10,
-  "./assets/player/player-default_copy.png",
-);
+const player = createPlayer(map, 10, 10, "./assets/player/player-default.png");
 
 const keys = {
   ArrowUp: false,

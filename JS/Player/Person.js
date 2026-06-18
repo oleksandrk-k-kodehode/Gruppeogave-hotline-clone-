@@ -93,16 +93,16 @@ class Person {
   shoot() {
     this.#setXY();
 
-    const bulletEl = new Bullet(
+    const bullet = new Bullet(
       this.centerX,
       this.centerY,
       "./assets/bullet.png",
     );
-    const bulletElem = bulletEl.buildBullet();
-    bulletElem.style.position = "absolute";
-    bulletElem.style.left = this.centerX + player.width + "px";
-    bulletElem.style.top = this.centerY + player.width + "px";
-    bulletElem.style.transform = `rotate(${this.angle}deg)`;
+    const bullet = Bullet.buildBullet();
+    bullet.style.position = "absolute";
+    bullet.style.left = this.centerX + player.width + "px";
+    bullet.style.top = this.centerY + player.width + "px";
+    bullet.style.transform = `rotate(${this.angle}deg)`;
 
     const angle = Math.atan2(
       this.mouseY - this.centerY,
@@ -110,14 +110,14 @@ class Person {
     );
     const bulletSpeed = 10;
 
-    bulletElem.currentX = this.centerX;
-    bulletElem.currentY = this.centerY;
-    bulletElem.vx = Math.cos(angle) * bulletSpeed;
-    bulletElem.vy = Math.sin(angle) * bulletSpeed;
+    Bullet.currentX = this.centerX;
+    Bullet.currentY = this.centerY;
+    Bullet.vx = Math.cos(angle) * bulletSpeed;
+    Bullet.vy = Math.sin(angle) * bulletSpeed;
 
     const mapElement = document.getElementById("map");
-    if (mapElement) mapElement.append(bulletElem);
-    return bulletElem;
+    if (mapElement) mapElement.append(Bullet);
+    return Bullet;
   }
 }
 
