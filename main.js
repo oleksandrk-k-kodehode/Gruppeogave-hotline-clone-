@@ -27,6 +27,7 @@ const keys = {
     KeyA: false,
     ArrowRight: false,
     KeyD: false,
+    Space: false,
 };
 
 const activeBullets = [];
