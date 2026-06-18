@@ -32,18 +32,21 @@ const keys = {
 
 const activeBullets = [];
 
-const shoot = document.addEventListener("keydown", (k) => {
+document.addEventListener("keydown", (k) => {
     if (k.code in keys) {
         keys[k.code] = true;
         k.preventDefault();
     }
 
     if (k.code === "Space") {
-        const bullet = player.shoot();
-        if (bullet) {
-            activeBullets.push(bullet);
-            player.move(-player.direction);
-            setTimeout(() => player.shoot, 3000);
+        if (activeBullets.length < 2) {
+            const bullet = player.shoot();
+
+            if (bullet) {
+                activeBullets.push(bullet);
+                player.move(-player.direction);
+                //setTimeout(() => player.shoot, 3000);
+            }
         }
     }
 });
