@@ -1,97 +1,77 @@
 :root {
-    --fromX: 0px;
-    --toX: 0px;
-    --fromY: 0px;
-    --toY: 0px;
+  --fromX: 0px;
+  --toX: 0px;
+  --fromY: 0px;
+  --toY: 0px;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #player {
-    position: absolute;
-    left: 30px;
-    top: 30px;
-    color: rgb(0, 0, 0);
-    width: 6px;
-    height: 6px;
-    background-image: none;
-    display: inline-block;
-}
-
-/* @keyframes fly {
-    0% {
-        transform: translate(var(--fromX), var(--fromY));
-    }
-    100% {
-        transform: translate(var(--toX), var(--toY));
-    }
-}
-
-.animation {
-    animation-name: fly;
-    animation-duration: 2s;
-} */
-
-.bullet img {
-    position: absolute;
-    z-index: 10;
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  color: rgb(0, 0, 0);
+  width: 6px;
+  height: 6px;
+  background-image: none;
+  display: inline-block;
 }
 
 .bullet img,
 .bullet {
-    /* top: 5.5px;
-    left: 30px; */
-    width: 3px;
-    height: 1px;
+  position: absolute;
+  width: 6x;
+  height: 4px;
 }
 
 #map {
-    background-color: rgb(163, 163, 181);
-    width: 100svw;
-    height: 88svh;
-    box-sizing: cover;
-    background-image: url(./assets/map.png);
-    background-repeat: no-repeat;
-    object-fit: fill;
-    background-size: 100%;
+  background-color: rgb(163, 163, 181);
+  width: 100svw;
+  height: 88svh;
+  box-sizing: cover;
+  background-image: url(./assets/map.png);
+  background-repeat: no-repeat;
+  object-fit: fill;
+  background-size: 100%;
 }
 
 #status {
-    background-color: rgb(18, 18, 18);
-    width: 100svw;
-    height: 80px;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 80px;
-    justify-content: center;
+  background-color: rgb(18, 18, 18);
+  width: 100svw;
+  height: 80px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 80px;
+  justify-content: center;
 }
 
 #status img {
-    width: 45px;
-    padding-top: 5px;
-    left: 300px;
-    position: relative;
+  width: 45px;
+  padding-top: 5px;
+  left: 300px;
+  position: relative;
 }
 
 /*----------ITEMS---------------*/
 #table img {
-    position: absolute;
-    left: 400px;
-    top: 34px;
-    height: 80px;
-    width: 80px;
+  position: absolute;
+  left: 400px;
+  top: 34px;
+  height: 80px;
+  width: 80px;
 }
 
 #cactus img {
-    height: 80px;
-    width: 80px;
-    left: 400px;
-    top: 300px;
-    position: absolute;
+  height: 80px;
+  width: 80px;
+  left: 400px;
+  top: 300px;
+  position: absolute;
 }
