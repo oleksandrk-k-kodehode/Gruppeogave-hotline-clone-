@@ -89,6 +89,10 @@ class Person {
         );
         this.upperBody.style.transform = `rotate(${rotation}deg)`;
     }
+    #recoil(angle, recoilDist = 3) {
+        this.entity.style.left = `${this.x + Math.cos((angle * Math.PI) / 180) * recoilDist}px`;
+        this.entity.style.top = `${this.y + Math.sin((angle * Math.PI) / 180) * recoilDist}px`;
+    }
 
     shoot() {
         this.#setXY();
@@ -114,6 +118,7 @@ class Person {
         bulletElem.currentY = this.centerY;
         bulletElem.vx = Math.cos(angle) * bulletSpeed;
         bulletElem.vy = Math.sin(angle) * bulletSpeed;
+        this.#recoil(this.angle);
 
         const mapElement = document.getElementById("map");
         if (mapElement) mapElement.append(bulletElem);
