@@ -26,6 +26,7 @@
 .bullet {
   position: absolute;
   width: 6x;
+  top: 2px;
   height: 4px;
 }
 
