@@ -60,6 +60,13 @@
   position: relative;
 }
 
+.enemy {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-image: none;
+}
+
 /*----------ITEMS---------------*/
 #table img {
   position: absolute;
