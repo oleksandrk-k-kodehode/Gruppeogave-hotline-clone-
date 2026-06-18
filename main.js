@@ -48,16 +48,15 @@ const keys = {
 
 const activeBullets = [];
 
-document.addEventListener("keydown", (k) => {
-    if (k.code in keys) keys[k.code] = true;
+const shoot = document.addEventListener("keydown", (k) => {
+  if (k.code in keys) keys[k.code] = true;
 
-    if (k.code === "Space") {
-        const bullet = player.shoot();
-        if (bullet) {
-            activeBullets.push(bullet);
-        }
-        gunshot.currentTime = 0;
-        gunshot.play();
+  if (k.code === "Space") {
+    const bullet = player.shoot();
+    if (bullet) {
+      activeBullets.push(bullet);
+      player.move(-player.direction);
+      setTimeout(() => player.shoot, 3000);
     }
 });
 
