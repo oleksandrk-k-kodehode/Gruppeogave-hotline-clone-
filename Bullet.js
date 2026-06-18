@@ -26,6 +26,8 @@ class Bullet {
 
         const bulletImg = new Image();
         bulletImg.src = this.img;
+        bulletImg.style.width = `${this.width}px`;
+        bulletImg.style.height = `${this.height}px`;
 
         bullet.append(bulletImg);
         return bullet;

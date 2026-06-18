@@ -15,7 +15,7 @@ class Person {
         this.angle = 0;
 
         this.upperbodyImg = upperbody;
-        this.width = 50;
+        this.width = 30;
 
         this.mouseX = x;
         this.mouseY = y;
@@ -66,7 +66,8 @@ class Person {
     }
 
     #calcAngle(x1, x2, y1, y2) {
-        return (Math.atan2(y2 - y1, x2 - x1) * 180) / Math.PI;
+        this.angle = (Math.atan2(y2 - y1, x2 - x1) * 180) / Math.PI;
+        return this.angle;
     }
 
     #calCenter(side, width) {
@@ -99,8 +100,8 @@ class Person {
         );
         const bulletElem = bulletEl.buildBullet();
         bulletElem.style.position = "absolute";
-        bulletElem.style.left = this.centerX + "px";
-        bulletElem.style.top = this.centerY + "px";
+        bulletElem.style.left = this.centerX + player.width + "px";
+        bulletElem.style.top = this.centerY + player.width + "px";
         bulletElem.style.transform = `rotate(${this.angle}deg)`;
 
         const angle = Math.atan2(
