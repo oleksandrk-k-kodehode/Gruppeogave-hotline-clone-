@@ -1,85 +1,70 @@
-:root {
-  --fromX: 0px;
-  --toX: 0px;
-  --fromY: 0px;
-  --toY: 0px;
-}
-
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 #player {
-  position: absolute;
-  left: 30px;
-  top: 30px;
-  color: rgb(0, 0, 0);
-  width: 6px;
-  height: 6px;
-  background-image: none;
-  display: inline-block;
-}
-
-.bullet img,
-.bullet {
-  position: absolute;
-  width: 6x;
-  top: 2px;
-  height: 4px;
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    color: rgb(0, 0, 0);
+    width: 6px;
+    height: 6px;
+    background-image: none;
+    display: inline-block;
 }
 
 #map {
-  background-color: rgb(163, 163, 181);
-  width: 100svw;
-  height: 88svh;
-  box-sizing: cover;
-  background-image: url(./assets/map.png);
-  background-repeat: no-repeat;
-  object-fit: fill;
-  background-size: 100%;
+    background-color: rgb(163, 163, 181);
+    width: 100svw;
+    height: 88svh;
+    box-sizing: cover;
+    background-image: url(./assets/map.png);
+    background-repeat: no-repeat;
+    object-fit: fill;
+    background-size: 100%;
 }
 
 #status {
-  background-color: rgb(18, 18, 18);
-  width: 100svw;
-  height: 80px;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 80px;
-  justify-content: center;
+    background-color: rgb(18, 18, 18);
+    width: 100svw;
+    height: 80px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 80px;
+    justify-content: center;
 }
 
 #status img {
-  width: 45px;
-  padding-top: 5px;
-  left: 300px;
-  position: relative;
+    width: 45px;
+    padding-top: 5px;
+    left: 300px;
+    position: relative;
 }
 
 .enemy {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background-image: none;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: none;
 }
 
 /*----------ITEMS---------------*/
 #table img {
-  position: absolute;
-  left: 400px;
-  top: 34px;
-  height: 80px;
-  width: 80px;
+    position: absolute;
+    left: 400px;
+    top: 34px;
+    height: 80px;
+    width: 80px;
 }
 
 #cactus img {
-  height: 80px;
-  width: 80px;
-  left: 400px;
-  top: 300px;
-  position: absolute;
+    height: 80px;
+    width: 80px;
+    left: 400px;
+    top: 300px;
+    position: absolute;
 }
