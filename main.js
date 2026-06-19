@@ -53,7 +53,6 @@ const shoot = document.addEventListener("keydown", (k) => {
       renderObj(player);
 
       //*---------CHANGE BULLET SPPED IN PERSON.JS---------*//
-
       setTimeout(() => {
         canShoot = true;
       }, 100);
