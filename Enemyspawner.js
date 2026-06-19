@@ -12,10 +12,9 @@ export class EnemySpawner {
     this.spawnTimer = 0;
     this.spawnInterval = ENEMY_SPAWN_INTERVAL;
 
-    this.enemyTypes = [];
-    for (const type in enemyData) {
-      this.enemyTypes.push(type);
-    }
+    this.enemies = [];
+
+    this.enemyTypes = Object.keys(enemyData);
   }
   update(dt) {
     this.spawnTimer += dt;
@@ -51,9 +50,24 @@ export class EnemySpawner {
         y = Math.random() * GAME_HEIGHT;
         break;
     }
-    this.enemyManager.spawn(type, x, y);
+
+    const data = enemyData[type];
+
+    const enemy = new Enemy(
+      x,
+      y,
+      data.width,
+      data.height,
+      data.speed,
+      new SeekBehaviour(),
+      data.image,
+    );
+
+    this.enemies.push(enemy);
   }
+
   reset() {
     this.spawnTimer = 0;
+    this.enemies.length = 0;
   }
 }

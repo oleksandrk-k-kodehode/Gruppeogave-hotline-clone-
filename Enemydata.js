@@ -14,6 +14,7 @@ export const enemyData = {
     speed: 16,
     health: 10,
     damage: 20,
+
     behaviourType: `seek`,
     Image: `assets/enemy/enemy-boss.png`,
   },

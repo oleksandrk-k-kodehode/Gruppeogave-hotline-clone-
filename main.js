@@ -33,6 +33,7 @@ const renderObj = (obj) => {
 };
 
 const activeBullets = [];
+let canShoot = true;
 
 const shoot = document.addEventListener("keydown", (k) => {
   if (k.code in keys) {
@@ -40,16 +41,21 @@ const shoot = document.addEventListener("keydown", (k) => {
     k.preventDefault();
   }
 
-  if (k.code === "Space") {
-    if (activeBullets.length < 3) {
-      const bullet = player.shoot();
-      if (bullet) {
-        activeBullets.push(bullet);
-        gunshot.currentTime = 0;
-        gunshot.play();
-        renderObj(player);
-        // setTimeout(() => player.shoot, 3000);
-      }
+  if (k.code === "Space" && canShoot) {
+    const bullet = player.shoot();
+
+    if (bullet) {
+      canShoot = false;
+
+      activeBullets.push(bullet);
+      gunshot.currentTime = 0;
+      gunshot.play();
+      renderObj(player);
+
+      //*---------CHANGE BULLET SPPED IN PERSON.JS---------*//
+      setTimeout(() => {
+        canShoot = true;
+      }, 100);
     }
   }
 });
