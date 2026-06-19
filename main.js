@@ -7,108 +7,103 @@ gunshot.volume = 0.1;
 const map = document.getElementById("map");
 
 const createPlayer = (map, x, y, img) => {
-    let mainFig = new Person(x, y, img);
-    map.append(mainFig.entity);
-    return mainFig;
+  let mainFig = new Person(x, y, img);
+  map.append(mainFig.entity);
+  return mainFig;
 };
 
-const player = createPlayer(
-    map,
-    10,
-    10,
-    "./assets/player/player-default_copy.png",
-);
+const player = createPlayer(map, 10, 10, "./assets/player/player-default.png");
 
 const keys = {
-    ArrowUp: false,
-    KeyW: false,
-    ArrowDown: false,
-    KeyS: false,
-    ArrowLeft: false,
-    KeyA: false,
-    ArrowRight: false,
-    KeyD: false,
-    Space: false,
+  ArrowUp: false,
+  KeyW: false,
+  ArrowDown: false,
+  KeyS: false,
+  ArrowLeft: false,
+  KeyA: false,
+  ArrowRight: false,
+  KeyD: false,
+  Space: false,
 };
 
 const renderObj = (obj) => {
-    obj.entity.style.left = obj.x + "px";
-    obj.entity.style.top = obj.y + "px";
-    obj.aim();
+  obj.entity.style.left = obj.x + "px";
+  obj.entity.style.top = obj.y + "px";
+  obj.aim();
 };
 
 const activeBullets = [];
 
 const shoot = document.addEventListener("keydown", (k) => {
-    if (k.code in keys) {
-        keys[k.code] = true;
-        k.preventDefault();
-    }
+  if (k.code in keys) {
+    keys[k.code] = true;
+    k.preventDefault();
+  }
 
-    if (k.code === "Space") {
-        if (activeBullets.length < 3) {
-            const bullet = player.shoot();
-            if (bullet) {
-                activeBullets.push(bullet);
-                gunshot.currentTime = 0;
-                gunshot.play();
-                renderObj(player);
-                // setTimeout(() => player.shoot, 3000);
-            }
-        }
+  if (k.code === "Space") {
+    if (activeBullets.length < 3) {
+      const bullet = player.shoot();
+      if (bullet) {
+        activeBullets.push(bullet);
+        gunshot.currentTime = 0;
+        gunshot.play();
+        renderObj(player);
+        // setTimeout(() => player.shoot, 3000);
+      }
     }
+  }
 });
 
 document.addEventListener("keyup", (k) => {
-    if (k.code in keys) keys[k.code] = false;
+  if (k.code in keys) keys[k.code] = false;
 });
 
 document.addEventListener("mousemove", (e) => {
-    player.mouseX = e.pageX;
-    player.mouseY = e.pageY;
-    player.aim();
+  player.mouseX = e.pageX;
+  player.mouseY = e.pageY;
+  player.aim();
 });
 
 function gameLoop() {
-    if (keys.KeyW || keys.ArrowUp) {
-        player.direction = "forwards";
-        player.move();
-    }
-    if (keys.KeyS || keys.ArrowDown) {
-        player.direction = "backwards";
-        player.move();
-    }
-    if (keys.KeyA || keys.ArrowLeft) {
-        player.direction = "left";
-        player.move();
-    }
-    if (keys.KeyD || keys.ArrowRight) {
-        player.direction = "right";
-        player.move();
-    }
+  if (keys.KeyW || keys.ArrowUp) {
+    player.direction = "forwards";
+    player.move();
+  }
+  if (keys.KeyS || keys.ArrowDown) {
+    player.direction = "backwards";
+    player.move();
+  }
+  if (keys.KeyA || keys.ArrowLeft) {
+    player.direction = "left";
+    player.move();
+  }
+  if (keys.KeyD || keys.ArrowRight) {
+    player.direction = "right";
+    player.move();
+  }
 
-    for (let i = activeBullets.length - 1; i >= 0; i--) {
-        const bullet = activeBullets[i];
+  for (let i = activeBullets.length - 1; i >= 0; i--) {
+    const bullet = activeBullets[i];
 
-        bullet.currentX += bullet.vx;
-        bullet.currentY += bullet.vy;
+    bullet.currentX += bullet.vx;
+    bullet.currentY += bullet.vy;
 
-        bullet.style.left = bullet.currentX + "px";
-        bullet.style.top = bullet.currentY + "px";
+    bullet.style.left = bullet.currentX + "px";
+    bullet.style.top = bullet.currentY + "px";
 
-        if (
-            bullet.currentX < -100 ||
-            bullet.currentX > window.innerWidth + 100 ||
-            bullet.currentY < -100 ||
-            bullet.currentY > window.innerHeight + 100
-        ) {
-            bullet.remove();
-            activeBullets.splice(i, 1);
-        }
+    if (
+      bullet.currentX < -100 ||
+      bullet.currentX > window.innerWidth + 100 ||
+      bullet.currentY < -100 ||
+      bullet.currentY > window.innerHeight + 100
+    ) {
+      bullet.remove();
+      activeBullets.splice(i, 1);
     }
-    renderObj(player);
+  }
+  renderObj(player);
 
-    requestAnimationFrame(gameLoop);
+  requestAnimationFrame(gameLoop);
 }
 
 requestAnimationFrame(gameLoop);
