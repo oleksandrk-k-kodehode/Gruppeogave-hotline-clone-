@@ -11,6 +11,7 @@ const createPlayer = (map, x, y, img) => {
     map.append(mainFig.entity);
     return mainFig;
 };
+
 const player = createPlayer(
     map,
     10,
@@ -30,6 +31,12 @@ const keys = {
     Space: false,
 };
 
+const renderObj = (obj) => {
+    obj.entity.style.left = obj.x + "px";
+    obj.entity.style.top = obj.y + "px";
+    obj.aim();
+};
+
 const activeBullets = [];
 
 const shoot = document.addEventListener("keydown", (k) => {
@@ -39,12 +46,15 @@ const shoot = document.addEventListener("keydown", (k) => {
     }
 
     if (k.code === "Space") {
-        player.shoot();
-        const bullet = player.shoot();
-        if (bullet) {
-            activeBullets.push(bullet);
-            // player.move(-player.direction);
-            // setTimeout(() => player.shoot, 3000);
+        if (activeBullets.length < 3) {
+            const bullet = player.shoot();
+            if (bullet) {
+                activeBullets.push(bullet);
+                gunshot.currentTime = 0;
+                gunshot.play();
+                renderObj(player);
+                // setTimeout(() => player.shoot, 3000);
+            }
         }
     }
 });
@@ -96,10 +106,8 @@ function gameLoop() {
             activeBullets.splice(i, 1);
         }
     }
+    renderObj(player);
 
-    player.entity.style.left = player.x + "px";
-    player.entity.style.top = player.y + "px";
-    player.aim();
     requestAnimationFrame(gameLoop);
 }
 
