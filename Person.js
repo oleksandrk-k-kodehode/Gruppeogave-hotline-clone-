@@ -79,9 +79,12 @@ class Person {
         this.centerY = this.#calCenter(this.y, this.width);
     }
 
-    recoil(angle = this.angle, recoilDist = 3) {
-        this.entity.style.left = `${this.x + Math.cos((angle * Math.PI) / 180) * recoilDist}px`;
-        this.entity.style.top = `${this.y + Math.sin((angle * Math.PI) / 180) * recoilDist}px`;
+    #recoil(angle = this.angle, recoilDist = 4) {
+        this.x -= Math.cos((angle * Math.PI) / 180) * recoilDist;
+        this.y -= Math.sin((angle * Math.PI) / 180) * recoilDist;
+
+        this.entity.style.top = this.y + "px";
+        this.entity.style.left = this.x + "px";
     }
 
     aim() {
@@ -119,7 +122,7 @@ class Person {
         bulletElem.currentY = this.centerY;
         bulletElem.vx = Math.cos(angle) * bulletSpeed;
         bulletElem.vy = Math.sin(angle) * bulletSpeed;
-        this.recoil();
+        this.#recoil();
 
         const mapElement = document.getElementById("map");
         if (mapElement) mapElement.append(bulletElem);
