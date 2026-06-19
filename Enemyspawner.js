@@ -2,9 +2,9 @@ import { enemyData } from "./Enemydata";
 
 const GAME_WIDTH = 1280;
 const GAME_HEIGHT = 720;
-const ASPECT_RATIO = 16 / 9;
 const ENEMY_SPAWN_INTERVAL = 2;
 const ENEMY_SPAWN_MARGIN = 200;
+const ENEMY_DESPAWN_MARGIN = 300;
 
 export class EnemySpawner {
   constructor(enemyManager) {
