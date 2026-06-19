@@ -1,4 +1,6 @@
 import { enemyData } from "./Enemydata";
+import { Enemy } from "./enemy";
+import { SeekBehaviour } from "./Seekbehaviour";
 
 const GAME_WIDTH = 1280;
 const GAME_HEIGHT = 720;
@@ -7,13 +9,10 @@ const ENEMY_SPAWN_MARGIN = 200;
 const ENEMY_DESPAWN_MARGIN = 300;
 
 export class EnemySpawner {
-  constructor(enemyManager) {
-    this.enemyManager = enemyManager;
+  constructor() {
     this.spawnTimer = 0;
     this.spawnInterval = ENEMY_SPAWN_INTERVAL;
-
     this.enemies = [];
-
     this.enemyTypes = Object.keys(enemyData);
   }
   update(dt) {
