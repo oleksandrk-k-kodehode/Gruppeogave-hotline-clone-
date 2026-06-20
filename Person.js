@@ -80,8 +80,11 @@ class Person {
   }
 
   recoil(angle = this.angle, recoilDist = 3) {
-    this.entity.style.left = `${this.x + Math.cos((angle * Math.PI) / 180) * recoilDist}px`;
-    this.entity.style.top = `${this.y + Math.sin((angle * Math.PI) / 180) * recoilDist}px`;
+    this.x += Math.cos((angle * Math.PI) / 180) * recoilDist;
+    this.y += Math.sin((angle * Math.PI) / 180) * recoilDist;
+
+    this.entity.style.left = this.x + "px";
+    this.entity.style.top = this.y + "px";
   }
 
   aim() {
@@ -105,8 +108,8 @@ class Person {
     );
     const bulletElem = bulletEl.buildBullet();
     bulletElem.style.position = "absolute";
-    bulletElem.style.left = this.centerX + player.width + "px";
-    bulletElem.style.top = this.centerY + player.width + "px";
+    bulletElem.style.left = this.centerX + "px";
+    bulletElem.style.top = this.centerY + "px";
     bulletElem.style.transform = `rotate(${this.angle}deg)`;
 
     const angle = Math.atan2(

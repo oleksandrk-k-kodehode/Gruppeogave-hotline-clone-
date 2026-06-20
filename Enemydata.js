@@ -5,8 +5,8 @@ export const enemyData = {
     speed: 16,
     health: 10,
     damage: 20,
-    behaviourType: `seek`,
-    image: `assets/enemy/enemy-normal.png`,
+    behaviourType: "seek",
+    image: "assets/enemy/enemy-normal.png",
   },
   Boss: {
     width: 48,
@@ -14,8 +14,7 @@ export const enemyData = {
     speed: 16,
     health: 10,
     damage: 20,
-
-    behaviourType: `seek`,
-    image: `assets/enemy/enemy-boss.png`,
+    behaviourType: "seek",
+    image: "assets/enemy/enemy-boss.png",
   },
 };

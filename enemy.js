@@ -6,14 +6,24 @@ export class Enemy {
     this.height = height;
     this.speed = speed;
     this.behaviour = behaviour;
-    this.image = image;
+
+    this.entity = document.createElement("img");
+    this.entity.src = image;
+    this.entity.style.position = "absolute";
+    this.entity.style.width = `${width}px`;
+    this.entity.style.height = `${height}px`;
+    this.entity.style.left = `${x}px`;
+    this.entity.style.top = `${y}px`;
   }
 
   update(dt, player) {
     this.behaviour.update(this, dt, player);
+
+    this.entity.style.left = `${this.x}px`;
+    this.entity.style.top = `${this.y}px`;
   }
 
-  draw(ctx) {
-    ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+  destroy() {
+    this.entity.remove();
   }
 }
