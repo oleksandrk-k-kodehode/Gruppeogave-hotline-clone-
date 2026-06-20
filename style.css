@@ -24,7 +24,7 @@ body {
 #map {
   position: relative;
   width: 100vw;
-  height: 92vh;
+  height: 92dvh;
   overflow: hidden;
   background-image: url("./assets/map.png");
   background-size: cover;
