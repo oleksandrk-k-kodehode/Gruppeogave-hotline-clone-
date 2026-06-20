@@ -8,6 +8,9 @@ export class SeekBehaviour {
     if (dist > 0) {
       enemy.x += (dx / dist) * enemy.speed * dt;
       enemy.y += (dy / dist) * enemy.speed * dt;
+
+      const angle = Math.atan2(dy, dx);
+      enemy.entity.style.transform = `rotate(${angle + Math.PI}rad)`;
     }
   }
 }
