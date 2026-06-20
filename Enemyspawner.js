@@ -1,6 +1,5 @@
 import { enemyData } from "./Enemydata";
 import { Enemy } from "./enemy";
-import { SeekBehaviour } from "./Seekbehaviour";
 
 const GAME_WIDTH = 1280;
 const GAME_HEIGHT = 720;
