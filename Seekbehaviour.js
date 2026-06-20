@@ -1,14 +1,13 @@
-export class Seekbehaviour {
+export class SeekBehaviour {
   update(enemy, dt, player) {
-    const dx = player.x + player.width / 2 - (enemy.x + enemy.width / 2);
-    const dy = player.y + player.height / 2 - (enemy.x + enemy.height / 2);
-    const len = Math.sqrt(dx * dx + dy * dy);
-    if (len > 0) {
-      const normalizedDx = dx / len;
-      const normalizedDy = dy / len;
+    const dx = player.x - enemy.x;
+    const dy = player.y - enemy.y;
 
-      enemy.x += normalizedDx * enemy.speed * dt;
-      enemy.y += normalizedDy * enemy.speed * dt;
+    const dist = Math.hypot(dx, dy);
+
+    if (dist > 0) {
+      enemy.x += (dx / dist) * enemy.speed * dt;
+      enemy.y += (dy / dist) * enemy.speed * dt;
     }
   }
 }

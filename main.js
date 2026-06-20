@@ -1,5 +1,6 @@
 import { Person } from "./Person.js";
 import { Obstacle } from "./Obstacle.js";
+import { EnemySpawner } from "./Enemyspawner.js";
 
 const gunshot = new Audio("./assets/sounds/cartoon-sfx-gunshot_E_minor.wav");
 gunshot.volume = 0.1;
@@ -13,6 +14,8 @@ const createPlayer = (map, x, y, img) => {
 };
 
 const player = createPlayer(map, 10, 10, "./assets/player/player-default.png");
+
+const enemySpawner = new EnemySpawner(map);
 
 const keys = {
   ArrowUp: false,
@@ -70,43 +73,46 @@ document.addEventListener("mousemove", (e) => {
   player.aim();
 });
 
-function gameLoop() {
+let lastTime = performance.now();
+
+function gameLoop(time) {
+  const dt = (time - lastTime) / 1000;
+  lastTime = time;
+
+  enemySpawner.update(dt);
+
+  for (const enemy of enemySpawner.enemies) {
+    enemy.update(dt, player);
+  }
+
   if (keys.KeyW || keys.ArrowUp) {
     player.direction = "forwards";
     player.move();
   }
+
   if (keys.KeyS || keys.ArrowDown) {
     player.direction = "backwards";
     player.move();
   }
+
   if (keys.KeyA || keys.ArrowLeft) {
     player.direction = "left";
     player.move();
   }
+
   if (keys.KeyD || keys.ArrowRight) {
     player.direction = "right";
     player.move();
   }
 
-  for (let i = activeBullets.length - 1; i >= 0; i--) {
-    const bullet = activeBullets[i];
-
+  for (const bullet of activeBullets) {
     bullet.currentX += bullet.vx;
     bullet.currentY += bullet.vy;
 
     bullet.style.left = bullet.currentX + "px";
     bullet.style.top = bullet.currentY + "px";
-
-    if (
-      bullet.currentX < -100 ||
-      bullet.currentX > window.innerWidth + 100 ||
-      bullet.currentY < -100 ||
-      bullet.currentY > window.innerHeight + 100
-    ) {
-      bullet.remove();
-      activeBullets.splice(i, 1);
-    }
   }
+
   renderObj(player);
 
   requestAnimationFrame(gameLoop);

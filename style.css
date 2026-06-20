@@ -22,14 +22,17 @@ body {
 }
 
 #map {
-  background-color: rgb(163, 163, 181);
-  width: 100svw;
-  height: 88svh;
-  box-sizing: cover;
-  background-image: url(./assets/map.png);
+  position: relative;
+  width: 100vw;
+  height: 92vh;
+  overflow: hidden;
+  background-image: url("./assets/map.png");
+  background-size: cover;
   background-repeat: no-repeat;
-  object-fit: fill;
-  background-size: 100%;
+}
+
+img {
+  position: absolute;
 }
 
 #status {
