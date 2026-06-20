@@ -6,22 +6,29 @@ const GAME_WIDTH = window.innerWidth;
 const GAME_HEIGHT = window.innerHeight * 0.85;
 const ENEMY_SPAWN_INTERVAL = 1;
 const ENEMY_SPAWN_MARGIN = 3;
+const ENEMY_SHOOT_RANGE = 250;
+const ENEMY_SHOOT_INTERVAL = 1.2;
 
 export class EnemySpawner {
-  constructor(map) {
+  constructor(map, activeBullets) {
     this.map = map;
     this.spawnTimer = 0;
+    this.activeBullets = activeBullets;
     this.spawnInterval = ENEMY_SPAWN_INTERVAL;
     this.enemies = [];
     this.enemyTypes = Object.keys(enemyData);
   }
 
-  update(dt) {
+  update(dt, player) {
     this.spawnTimer += dt;
 
     if (this.spawnTimer >= this.spawnInterval) {
       this.spawnWave();
       this.spawnTimer = 0;
+    }
+
+    for (const enemy of this.enemies) {
+      enemy.update(dt, player, this.activeBullets);
     }
   }
 
