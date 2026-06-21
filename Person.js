@@ -72,7 +72,7 @@ class Person {
                 this.x += this.speed;
             }
         } else {
-            this.#returnOnMap(this, this.mapHeight, this.mapWidth);
+            this.#returnOnMap(this);
         }
         this.entity.style.top = this.y + "px";
         this.entity.style.left = this.x + "px";
@@ -106,23 +106,23 @@ class Person {
         this.entity.style.left = this.x + "px";
     }
 
-    #returnOnMap(obj, heightM, widthM) {
+    #returnOnMap(obj) {
         if (obj.centerX < 0) {
             obj.x = 1;
-        } else if (obj.centerX > widthM) {
-            obj.x = widthM - this.speed;
+        } else if (obj.centerX > this.mapWidth) {
+            obj.x = this.mapWidth - this.speed - 1;
         } else if (obj.centerY < 0) {
             obj.y = 1;
-        } else if (obj.centerY > heightM) {
-            obj.y = heightM - this.speed;
+        } else if (obj.centerY > this.mapHeight) {
+            obj.y = this.mapHeight - this.speed - 1;
         }
     }
 
     #checkInMap(obj) {
         this.#SEtXY();
 
-        if (obj.centerX >= 0 && obj.centerX <= this.mapWidth) {
-            if (obj.centerY >= 0 && obj.centerY <= this.mapHeight) {
+        if (obj.centerX > 0 && obj.centerX < this.mapWidth - this.speed) {
+            if (obj.centerY > 0 && obj.centerY < this.mapHeight - this.speed) {
                 return true;
             }
         }
@@ -174,80 +174,9 @@ class Person {
             this.scream.currentTime = 0;
             this.scream.play();
         }
+        this.entity.style.top = this.y + "px";
+        this.entity.style.left = this.x + "px";
     }
-    this.entity.style.top = this.y + "px";
-    this.entity.style.left = this.x + "px";
-  }
-
-  #calcDistance(y2, y1, x2, x1) {
-    let deltaX = x2 - x1;
-    let deltaY = y2 - y1;
-    return Math.hypot(deltaX, deltaY);
-  }
-
-  #calcAngle(x1, x2, y1, y2) {
-    this.angle = (Math.atan2(y2 - y1, x2 - x1) * 180) / Math.PI;
-    return this.angle;
-  }
-
-  #calCenter(side, width) {
-    return side + width / 2;
-  }
-
-  #setXY() {
-    this.centerX = this.#calCenter(this.x, this.width);
-    this.centerY = this.#calCenter(this.y, this.width);
-  }
-
-  recoil(angle = this.angle, recoilDist = 3) {
-    this.x += Math.cos((angle * Math.PI) / 180) * recoilDist;
-    this.y += Math.sin((angle * Math.PI) / 180) * recoilDist;
-
-    this.entity.style.left = this.x + "px";
-    this.entity.style.top = this.y + "px";
-  }
-
-  aim() {
-    this.#setXY();
-    let rotation = this.#calcAngle(
-      this.centerX,
-      this.mouseX,
-      this.centerY,
-      this.mouseY,
-    );
-    this.upperBody.style.transform = `rotate(${rotation}deg)`;
-  }
-
-  shoot() {
-    this.#setXY();
-
-    const bulletEl = new Bullet(
-      this.centerX,
-      this.centerY,
-      "./assets/bullet.png",
-    );
-    const bulletElem = bulletEl.buildBullet();
-    bulletElem.style.position = "absolute";
-    bulletElem.style.left = this.centerX + "px";
-    bulletElem.style.top = this.centerY + "px";
-    bulletElem.style.transform = `rotate(${this.angle}deg)`;
-
-    const angle = Math.atan2(
-      this.mouseY - this.centerY,
-      this.mouseX - this.centerX,
-    );
-    const bulletSpeed = 24;
-
-    bulletElem.currentX = this.centerX;
-    bulletElem.currentY = this.centerY;
-    bulletElem.vx = Math.cos(angle) * bulletSpeed;
-    bulletElem.vy = Math.sin(angle) * bulletSpeed;
-    this.recoil();
-
-    const mapElement = document.getElementById("map");
-    if (mapElement) mapElement.append(bulletElem);
-    return bulletElem;
-  }
 }
 
 export { Person };
