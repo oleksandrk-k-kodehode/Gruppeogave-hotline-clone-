@@ -1,14 +1,16 @@
-export class Seekbehaviour {
+export class SeekBehaviour {
   update(enemy, dt, player) {
     const dx = player.x - enemy.x;
     const dy = player.y - enemy.y;
-    const len = Math.sqrt(dx * dx + dy * dy);
-    if (len > 0) {
-      const normalizedDx = dx / len;
-      const normalizedDy = dy / len;
 
-      enemy.x += normalizedDx * enemy.speed * dt;
-      enemy.y += normalizedDy * enemy.speed * dt;
+    const dist = Math.hypot(dx, dy);
+
+    if (dist > 0) {
+      enemy.x += (dx / dist) * enemy.speed * dt;
+      enemy.y += (dy / dist) * enemy.speed * dt;
+
+      const angle = Math.atan2(dy, dx);
+      enemy.entity.style.transform = `rotate(${angle + Math.PI}rad)`;
     }
   }
 }
