@@ -1,4 +1,4 @@
-# Prosjektnavn her etterhvert
+# Figmas Fury
 
 Readme-fil
 
