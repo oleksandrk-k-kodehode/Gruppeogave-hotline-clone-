@@ -30,6 +30,11 @@ class Person {
         this.entity.style.left = this.x + "px";
         this.centerX = 0;
         this.centerY = 0;
+        this.map = window.getComputedStyle(document.getElementById("map"));
+        this.mapHeight = Number(
+            this.map.getPropertyValue("height").slice(0, -2),
+        );
+        this.mapWidth = Number(this.map.getPropertyValue("width").slice(0, -2));
     }
 
     build(identity) {
@@ -51,6 +56,10 @@ class Person {
 
     move() {
         console.log("X: " + this.x, "Y: " + this.y);
+        console.log(
+            "mapWidth: " + this.mapWidth,
+            "mapHeight: " + this.mapHeight,
+        );
         console.log(this.#checkInMap(this));
         if (this.#checkInMap(this)) {
             if (this.direction === "backwards") {
@@ -62,6 +71,8 @@ class Person {
             } else if (this.direction === "right") {
                 this.x += this.speed;
             }
+        } else {
+            this.#returnOnMap(this, this.mapHeight, this.mapWidth);
         }
         this.entity.style.top = this.y + "px";
         this.entity.style.left = this.x + "px";
@@ -95,16 +106,23 @@ class Person {
         this.entity.style.left = this.x + "px";
     }
 
+    #returnOnMap(obj, heightM, widthM) {
+        if (obj.centerX < 0) {
+            obj.x = 1;
+        } else if (obj.centerX > widthM) {
+            obj.x = widthM - this.speed;
+        } else if (obj.centerY < 0) {
+            obj.y = 1;
+        } else if (obj.centerY > heightM) {
+            obj.y = heightM - this.speed;
+        }
+    }
+
     #checkInMap(obj) {
         this.#SEtXY();
-        const map = window.getComputedStyle(document.getElementById("map"));
-        const mapHeight = Number(map.getPropertyValue("height").slice(0, -2));
-        console.log("mapH: " + mapHeight);
-        const mapWidth = Number(map.getPropertyValue("width").slice(0, -2));
-        console.log("mapW: " + mapWidth);
 
-        if (obj.centerX >= 0 && obj.centerX <= mapWidth) {
-            if (obj.centerY >= 0 && obj.centerY <= mapHeight) {
+        if (obj.centerX >= 0 && obj.centerX <= this.mapWidth) {
+            if (obj.centerY >= 0 && obj.centerY <= this.mapHeight) {
                 return true;
             }
         }
