@@ -1,4 +1,4 @@
-import { Bullet } from "../Main & Person/Bullet.js";
+import { Bullet } from "./Bullet.js";
 class Person {
   constructor(
     x,

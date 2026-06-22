@@ -1,6 +1,6 @@
-import { enemyData } from "../Enemy/Enemydata.js";
-import { Enemy } from "../Enemy/enemy.js";
-import { SeekBehaviour } from "../Enemy/Seekbehaviour.js";
+import { enemyData } from "./Enemydata.js";
+import { Enemy } from "./enemy.js";
+import { SeekBehaviour } from "./Seekbehaviour.js";
 
 export const GAME_WIDTH = window.innerWidth;
 export const GAME_HEIGHT = window.innerHeight * 0.85;
