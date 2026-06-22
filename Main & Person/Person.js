@@ -1,5 +1,4 @@
 import { Bullet } from "../Main & Person/Bullet.js";
-
 class Person {
   constructor(
     x,
@@ -24,8 +23,6 @@ class Person {
 
     this.mouseX = x;
     this.mouseY = y;
-
-    this.collideWithWalls();
 
     this.role = role;
     [this.entity, this.upperBody] = this.build(this.role);
@@ -55,17 +52,10 @@ class Person {
     return [entity, upperBody];
   }
 
-  collideWithWalls() {
-    if (this.x > 0) {
-      this.x = 25;
-      console.log(this.collideWithWalls);
-    }
-    if (this.y > 0) {
-      this.y = 25;
-    }
-  }
-
   move() {
+    console.log("X: " + this.x, "Y: " + this.y);
+    console.log("mapWidth: " + this.mapWidth, "mapHeight: " + this.mapHeight);
+    console.log(this.#checkInMap(this));
     if (this.#checkInMap(this)) {
       if (this.direction === "backwards") {
         this.y += this.speed;
@@ -111,23 +101,24 @@ class Person {
     this.entity.style.left = this.x + "px";
   }
 
-  #returnOnMap(obj) {
-    if (obj.centerX < 0) {
-      obj.x = 1;
-    } else if (obj.centerX > this.mapWidth) {
-      obj.x = this.mapWidth - this.speed - 1;
-    } else if (obj.centerY < 0) {
-      obj.y = 1;
-    } else if (obj.centerY > this.mapHeight) {
-      obj.y = this.mapHeight - this.speed - 1;
+  #returnOnMap(obj, limit = 10) {
+    if (obj.centerX <= limit) {
+      obj.x = limit;
+    } else if (obj.centerX >= this.mapWidth) {
+      obj.x = this.mapWidth - this.width;
+    } else if (obj.centerY <= limit) {
+      obj.y = limit;
+    } else if (obj.centerY >= this.mapHeight) {
+      obj.y = this.mapHeight - this.width;
     }
+    console.log([obj.x, obj.y]);
   }
 
   #checkInMap(obj) {
     this.#SEtXY();
 
-    if (obj.centerX > 0 && obj.centerX < this.mapWidth - this.speed) {
-      if (obj.centerY > 0 && obj.centerY < this.mapHeight - this.speed) {
+    if (obj.centerX > 10 && obj.centerX < this.mapWidth) {
+      if (obj.centerY > 10 && obj.centerY < this.mapHeight) {
         return true;
       }
     }
