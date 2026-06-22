@@ -1,6 +1,6 @@
-import { Person } from "./Person.js";
-import { Obstacle } from "./Obstacle.js";
-import { EnemySpawner } from "./Enemyspawner.js";
+import { Person } from "../Main & Person/Person.js";
+import { Obstacle } from "../Main & Person/Obstacle.js";
+import { EnemySpawner } from "../Enemy/Enemyspawner.js";
 
 const gunshot = new Audio("./assets/sounds/cartoon-sfx-gunshot_E_minor.wav");
 gunshot.volume = 0.1;
@@ -45,6 +45,7 @@ const shoot = document.addEventListener("keydown", (k) => {
 
   if (k.code === "Space" && canShoot) {
     const bullet = player.shoot();
+    console.log(canShoot);
 
     if (bullet) {
       canShoot = false;

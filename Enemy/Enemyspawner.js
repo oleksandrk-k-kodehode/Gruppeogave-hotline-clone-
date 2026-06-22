@@ -1,9 +1,9 @@
-import { enemyData } from "./Enemydata.js";
-import { Enemy } from "./enemy.js";
-import { SeekBehaviour } from "./SeekBehaviour.js";
+import { enemyData } from "../Enemy/Enemydata.js";
+import { Enemy } from "../Enemy/enemy.js";
+import { SeekBehaviour } from "../Enemy/Seekbehaviour.js";
 
-const GAME_WIDTH = window.innerWidth;
-const GAME_HEIGHT = window.innerHeight * 0.85;
+export const GAME_WIDTH = window.innerWidth;
+export const GAME_HEIGHT = window.innerHeight * 0.85;
 const ENEMY_SPAWN_INTERVAL = 1;
 const ENEMY_SPAWN_MARGIN = 3;
 const ENEMY_SHOOT_RANGE = 250;
