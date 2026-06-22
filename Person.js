@@ -106,23 +106,24 @@ class Person {
         this.entity.style.left = this.x + "px";
     }
 
-    #returnOnMap(obj) {
-        if (obj.centerX < 0) {
-            obj.x = 1;
-        } else if (obj.centerX > this.mapWidth) {
-            obj.x = this.mapWidth - this.speed - 1;
-        } else if (obj.centerY < 0) {
-            obj.y = 1;
-        } else if (obj.centerY > this.mapHeight) {
-            obj.y = this.mapHeight - this.speed - 1;
+    #returnOnMap(obj, limit = 10) {
+        if (obj.centerX <= limit) {
+            obj.x = limit;
+        } else if (obj.centerX >= this.mapWidth) {
+            obj.x = this.mapWidth - this.width;
+        } else if (obj.centerY <= limit) {
+            obj.y = limit;
+        } else if (obj.centerY >= this.mapHeight) {
+            obj.y = this.mapHeight - this.width;
         }
+        console.log([obj.x, obj.y]);
     }
 
     #checkInMap(obj) {
         this.#SEtXY();
 
-        if (obj.centerX > 0 && obj.centerX < this.mapWidth - this.speed) {
-            if (obj.centerY > 0 && obj.centerY < this.mapHeight - this.speed) {
+        if (obj.centerX > 10 && obj.centerX < this.mapWidth) {
+            if (obj.centerY > 10 && obj.centerY < this.mapHeight) {
                 return true;
             }
         }
