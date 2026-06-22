@@ -1,4 +1,4 @@
-import { Bullet } from "./Bullet.js";
+import { Bullet } from "../Main & Person/Bullet.js";
 
 const gunshot = new Audio("./assets/sounds/cartoon-sfx-gunshot_E_minor.wav");
 gunshot.volume = 0.1;
