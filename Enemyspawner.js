@@ -7,7 +7,7 @@ const GAME_HEIGHT = window.innerHeight * 0.85;
 const ENEMY_SPAWN_INTERVAL = 1;
 const ENEMY_SPAWN_MARGIN = 3;
 const ENEMY_SHOOT_RANGE = 250;
-const ENEMY_SHOOT_INTERVAL = 1.2;
+const ENEMY_SHOOT_INTERVAL = 3;
 
 export class EnemySpawner {
   constructor(map, activeBullets) {
