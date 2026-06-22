@@ -116,7 +116,6 @@ class Person {
         } else if (obj.centerY >= this.mapHeight) {
             obj.y = this.mapHeight - this.width;
         }
-        console.log([obj.x, obj.y]);
     }
 
     #checkInMap(obj) {
@@ -128,6 +127,14 @@ class Person {
             }
         }
         return false;
+    }
+
+    #checkCollision(xeno) {
+        if (xeno > this.x && xeno < this.x + this.width) {
+            if (xeno > this.y && xeno < this.y + this.width) return true;
+        } else {
+            return false;
+        }
     }
 
     aim() {
