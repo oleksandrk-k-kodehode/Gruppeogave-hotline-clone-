@@ -138,6 +138,7 @@ class Person {
     }
 
     death() {
+        this.screamDeath.currentTime = 0;
         this.screamDeath.play();
     }
 
