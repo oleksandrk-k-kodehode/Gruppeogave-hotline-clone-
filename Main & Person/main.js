@@ -2,7 +2,7 @@ import { Person } from "./Person.js";
 import { Obstacle } from "./Obstacle.js";
 import { EnemySpawner } from "../Enemy/Enemyspawner.js";
 
-const gunshot = new Audio("./assets/sounds/cartoon-sfx-gunshot_E_minor.wav");
+const gunshot = new Audio("./assets/sounds/gunshot.wav");
 gunshot.volume = 0.1;
 
 const map = document.getElementById("map");
