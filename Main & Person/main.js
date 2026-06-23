@@ -1,5 +1,4 @@
 import { Person } from "./Person.js";
-import { Obstacle } from "./Obstacle.js";
 import { EnemySpawner } from "../Enemy/Enemyspawner.js";
 
 const gunshot = new Audio("./assets/sounds/gunshot.wav");
@@ -45,7 +44,6 @@ const shoot = document.addEventListener("keydown", (k) => {
 
   if (k.code === "Space" && canShoot) {
     const bullet = player.shoot();
-    console.log(canShoot);
 
     if (bullet) {
       canShoot = false;
@@ -114,10 +112,13 @@ function gameLoop(time) {
 
     bullet.el.style.left = bullet.currentX + "px";
     bullet.el.style.top = bullet.currentY + "px";
+    console.log(player.checkCollision(bullet));
+    if (player.checkCollision(bullet)) {
+      player.death();
+    }
   }
 
   renderObj(player);
-
   requestAnimationFrame(gameLoop);
 }
 

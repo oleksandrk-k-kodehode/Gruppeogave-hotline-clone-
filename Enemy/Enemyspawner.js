@@ -35,6 +35,7 @@ export class EnemySpawner {
   spawnWave() {
     const type =
       this.enemyTypes[Math.floor(Math.random() * this.enemyTypes.length)];
+
     const data = enemyData[type];
 
     let x;
@@ -51,10 +52,11 @@ export class EnemySpawner {
       data.speed,
       new SeekBehaviour(),
       data.image,
-      data.bulletImg,
     );
 
     this.map.append(enemy.entity);
     this.enemies.push(enemy);
+
+    console.log("enemy spawned");
   }
 }
