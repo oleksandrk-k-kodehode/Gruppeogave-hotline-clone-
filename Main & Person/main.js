@@ -85,6 +85,8 @@ document.addEventListener("mousemove", (e) => {
 
 let lastTime = performance.now();
 
+window.ammoElement = document.getElementById("ammo-count");
+
 function gameLoop(time) {
   const dt = (time - lastTime) / 1000;
   lastTime = time;
