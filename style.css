@@ -77,3 +77,50 @@ img {
   top: 300px;
   position: absolute;
 }
+
+#game-over-overlay {
+  position: absolute;
+  z-index: 999;
+
+  transform: translate(65%, -150%);
+
+  align-items: center;
+  justify-content: center;
+  width: 650px;
+  height: 300px;
+  background-color: rgb(7, 7, 7);
+  display: none;
+  border-radius: 12px;
+}
+
+.game-over {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10%;
+}
+
+.game-over h1 {
+  font-size: 64px;
+}
+
+.game-over h1,
+.game-over h2 {
+  gap: 40px;
+  color: white;
+}
+
+.reset {
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 5%;
+  background-color: red;
+  color: white;
+  border: none;
+}
+
+.reset:hover {
+  background-color: rgb(255, 53, 53);
+  cursor: pointer;
+}
