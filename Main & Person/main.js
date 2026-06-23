@@ -114,7 +114,7 @@ function gameLoop(time) {
     bullet.el.style.top = bullet.currentY + "px";
     console.log(player.checkCollision(bullet));
     if (player.checkCollision(bullet)) {
-      player.death();
+      player.destroy();
     }
   }
 

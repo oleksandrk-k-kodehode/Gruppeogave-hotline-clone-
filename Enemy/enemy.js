@@ -1,7 +1,7 @@
 import { Bullet } from "../Main & Person/Bullet.js";
 import { enemyData } from "../Enemy/Enemydata.js";
 
-const gunshot = new Audio("./assets/sounds/gunshot.wav");
+const gunshot = new Audio("../assets/sounds/gunshot.wav");
 gunshot.volume = 0.1;
 
 export class Enemy {
@@ -53,8 +53,6 @@ export class Enemy {
     const el = bullet.buildBullet();
     gunshot.currentTime = 0;
     gunshot.play();
-
-    console.log(enemyData.bulletImg);
 
     const bulletObj = {
       el,
