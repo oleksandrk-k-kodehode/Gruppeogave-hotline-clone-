@@ -66,7 +66,20 @@ export class Enemy {
     this.map.append(el);
   }
 
-  destroy() {
+  checkCollision(xeno) {
+    let centerXX = xeno.currentX;
+    let centerXY = xeno.currentY;
+    if (centerXX > this.x && centerXX < this.x + this.width) {
+      if (centerXY > this.y && centerXY < this.y + this.width) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  death() {
+    this.screamDeath.currentTime = 0;
+    this.screamDeath.play();
     this.entity.remove();
   }
 }

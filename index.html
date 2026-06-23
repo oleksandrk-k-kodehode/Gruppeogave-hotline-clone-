@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Figma Fury</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Figma Fury</title>
 
-        <!------SCRIPTS---------->
-        <script type="module" src="Main & Person/main.js" defer></script>
-        <script type="module" src="Enemy/enemy.js" defer></script>
+    <!------SCRIPTS---------->
+    <script type="module" src="Main & Person/main.js" defer></script>
+    <script type="module" src="Enemy/enemy.js" defer></script>
 
         <link rel="stylesheet" href="style.css" />
         <link
@@ -19,6 +19,15 @@
     <body>
         <section>
             <div id="map"></div>
+          
+                <div id="game-over-overlay">
+        <div class="game-over">
+         <h1>You lost</h1>
+          <h2>Your score was : ________</h2>
+          <button class="reset">Reset?</button>
+        </div>
+      </div>
+          
             <!------------------SCOREBOARD-------------------->
             <div id="status">
                 <div id="life">
@@ -47,4 +56,5 @@
             </div>
         </section>
     </body>
+
 </html>

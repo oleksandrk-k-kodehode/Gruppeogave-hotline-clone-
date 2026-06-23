@@ -1,5 +1,8 @@
 import { Person } from "./Person.js";
 import { EnemySpawner } from "../Enemy/Enemyspawner.js";
+import { Enemy } from "../Enemy/enemy.js";
+import { enemyData } from "../Enemy/Enemydata.js";
+import { gameOver } from "../Reset.js";
 
 const gunshot = new Audio("./assets/sounds/gunshot.wav");
 gunshot.volume = 0.1;
@@ -9,9 +12,9 @@ const activeBullets = [];
 let canShoot = true;
 
 const createPlayer = (map, x, y, img) => {
-    let mainFig = new Person(x, y, img);
-    map.append(mainFig.entity);
-    return mainFig;
+  let mainFig = new Person(x, y, img);
+  map.append(mainFig.entity);
+  return mainFig;
 };
 
 const player = createPlayer(map, 10, 10, "./assets/player/player-default.png");
@@ -19,62 +22,62 @@ const player = createPlayer(map, 10, 10, "./assets/player/player-default.png");
 const enemySpawner = new EnemySpawner(map, activeBullets);
 
 const keys = {
-    ArrowUp: false,
-    KeyW: false,
-    ArrowDown: false,
-    KeyS: false,
-    ArrowLeft: false,
-    KeyA: false,
-    ArrowRight: false,
-    KeyD: false,
-    Space: false,
+  ArrowUp: false,
+  KeyW: false,
+  ArrowDown: false,
+  KeyS: false,
+  ArrowLeft: false,
+  KeyA: false,
+  ArrowRight: false,
+  KeyD: false,
+  Space: false,
 };
 
 const renderObj = (obj) => {
-    obj.entity.style.left = obj.x + "px";
-    obj.entity.style.top = obj.y + "px";
-    obj.aim();
+  obj.entity.style.left = obj.x + "px";
+  obj.entity.style.top = obj.y + "px";
+  obj.aim();
 };
 
 const shoot = document.addEventListener("keydown", (k) => {
-    if (k.code in keys) {
-        keys[k.code] = true;
-        k.preventDefault();
+  if (k.code in keys) {
+    keys[k.code] = true;
+    k.preventDefault();
+  }
+
+  if (k.code === "Space" && canShoot) {
+    const bullet = player.shoot();
+
+    if (bullet) {
+      canShoot = false;
+
+      activeBullets.push({
+        el: bullet,
+        currentX: bullet.currentX,
+        currentY: bullet.currentY,
+        vx: bullet.vx,
+        vy: bullet.vy,
+      });
+      gunshot.currentTime = 0;
+      gunshot.play();
+      renderObj(player);
+
+      //*---------CHANGE BULLET SPPED IN PERSON.JS---------*//
+      setTimeout(() => {
+        canShoot = true;
+      }, 100);
     }
-
-    if (k.code === "Space" && canShoot) {
-        const bullet = player.shoot();
-
-        if (bullet) {
-            canShoot = false;
-
-            activeBullets.push({
-                el: bullet,
-                currentX: bullet.currentX,
-                currentY: bullet.currentY,
-                vx: bullet.vx,
-                vy: bullet.vy,
-            });
-            gunshot.currentTime = 0;
-            gunshot.play();
-            renderObj(player);
-
-            //*---------CHANGE BULLET SPPED IN PERSON.JS---------*//
-            setTimeout(() => {
-                canShoot = true;
-            }, 100);
-        }
-    }
+  }
 });
 
 document.addEventListener("keyup", (k) => {
-    if (k.code in keys) keys[k.code] = false;
+  if (k.code in keys) keys[k.code] = false;
 });
 
 document.addEventListener("mousemove", (e) => {
-    player.mouseX = e.pageX;
-    player.mouseY = e.pageY;
-    player.aim();
+  player.mouseX = e.pageX;
+  player.mouseY = e.pageY;
+  player.aim();
 });
 
 let lastTime = performance.now();
@@ -82,6 +85,7 @@ let lastTime = performance.now();
 window.ammoElement = document.getElementById("ammo-count");
 
 function gameLoop(time) {
+
     const dt = (time - lastTime) / 1000;
     lastTime = time;
     enemySpawner.update(dt, player);
@@ -118,11 +122,15 @@ function gameLoop(time) {
         console.log(player.checkCollision(bullet));
         if (player.checkCollision(bullet)) {
             player.death();
+            gameOver();
+            !gameLoop();
         }
-    }
 
-    renderObj(player);
-    requestAnimationFrame(gameLoop);
+    }
+  }
+
+  renderObj(player);
+  requestAnimationFrame(gameLoop);
 }
 
 requestAnimationFrame(gameLoop);

@@ -56,7 +56,11 @@ export class EnemySpawner {
 
     this.map.append(enemy.entity);
     this.enemies.push(enemy);
+  }
 
-    console.log("enemy spawned");
+  death() {
+    this.screamDeath.currentTime = 0;
+    this.screamDeath.play();
+    this.entity.remove();
   }
 }
