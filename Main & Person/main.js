@@ -85,7 +85,7 @@ function gameLoop(time) {
     const dt = (time - lastTime) / 1000;
     lastTime = time;
     enemySpawner.update(dt, player);
-    window.ammoElement.textContent = player.ammoMag;
+    window.ammoElement.textContent = player.ammoMag; // Updates ammo count in HTML
 
     if (keys.KeyW || keys.ArrowUp) {
         player.direction = "forwards";
