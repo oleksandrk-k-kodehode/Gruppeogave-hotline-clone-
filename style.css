@@ -50,6 +50,14 @@ img {
     position: static;
 }
 
+#ammo-count {
+    color: yellow;
+    position: relative;
+    /* Hack to position closer to broad image: */
+    top: -10px;
+    left: -25px;
+}
+
 .enemy {
     position: absolute;
     width: 30px;
