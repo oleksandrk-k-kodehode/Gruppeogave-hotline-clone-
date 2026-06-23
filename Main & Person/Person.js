@@ -170,7 +170,7 @@ class Person {
         this.mouseY - this.centerY,
         this.mouseX - this.centerX,
       );
-      const bulletSpeed = 15;
+      const bulletSpeed = 26;
 
       bulletElem.currentX = this.centerX;
       bulletElem.currentY = this.centerY;
