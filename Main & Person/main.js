@@ -82,13 +82,19 @@ document.addEventListener("mousemove", (e) => {
 
 let lastTime = performance.now();
 
-window.ammoElement = document.getElementById("ammo-count");
+window.ammoElement = document.querySelector(".ammo");
+window.cashElement = document.querySelector(".cash");
+window.healthElement = document.querySelector(".life");
+window.killElement = document.querySelector(".score");
+window.cashElement.textContent = 1;
+window.healthElement.textContent = 1;
+window.killElement.textContent = 1;
 
 function gameLoop(time) {
     const dt = (time - lastTime) / 1000;
     lastTime = time;
     enemySpawner.update(dt, player);
-    window.ammoElement.textContent = player.ammoMag; // Updates ammo count in HTML
+    window.ammoElement.textContent = player.ammoMag;
 
     if (keys.KeyW || keys.ArrowUp) {
         player.direction = "forwards";
