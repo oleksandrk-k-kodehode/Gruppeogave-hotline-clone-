@@ -85,42 +85,47 @@ let lastTime = performance.now();
 window.ammoElement = document.getElementById("ammo-count");
 
 function gameLoop(time) {
-  const dt = (time - lastTime) / 1000;
-  lastTime = time;
-  enemySpawner.update(dt, player);
 
-  if (keys.KeyW || keys.ArrowUp) {
-    player.direction = "forwards";
-    player.move();
-  }
+    const dt = (time - lastTime) / 1000;
+    lastTime = time;
+    enemySpawner.update(dt, player);
+    window.ammoElement.textContent = player.ammoMag; // Updates ammo count in HTML
 
-  if (keys.KeyS || keys.ArrowDown) {
-    player.direction = "backwards";
-    player.move();
-  }
+    if (keys.KeyW || keys.ArrowUp) {
+        player.direction = "forwards";
+        player.move();
+    }
 
-  if (keys.KeyA || keys.ArrowLeft) {
-    player.direction = "left";
-    player.move();
-  }
+    if (keys.KeyS || keys.ArrowDown) {
+        player.direction = "backwards";
+        player.move();
+    }
 
-  if (keys.KeyD || keys.ArrowRight) {
-    player.direction = "right";
-    player.move();
-  }
+    if (keys.KeyA || keys.ArrowLeft) {
+        player.direction = "left";
+        player.move();
+    }
 
-  for (const bullet of activeBullets) {
-    if (!bullet || !bullet.el) continue;
+    if (keys.KeyD || keys.ArrowRight) {
+        player.direction = "right";
+        player.move();
+    }
 
-    bullet.currentX += bullet.vx;
-    bullet.currentY += bullet.vy;
+    for (const bullet of activeBullets) {
+        if (!bullet || !bullet.el) continue;
 
-    bullet.el.style.left = bullet.currentX + "px";
-    bullet.el.style.top = bullet.currentY + "px";
-    if (player.checkCollision(bullet)) {
-      player.death();
-      gameOver();
-      !gameLoop();
+        bullet.currentX += bullet.vx;
+        bullet.currentY += bullet.vy;
+
+        bullet.el.style.left = bullet.currentX + "px";
+        bullet.el.style.top = bullet.currentY + "px";
+        console.log(player.checkCollision(bullet));
+        if (player.checkCollision(bullet)) {
+            player.death();
+            gameOver();
+            !gameLoop();
+        }
+
     }
   }
 
