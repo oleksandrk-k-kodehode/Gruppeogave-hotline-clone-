@@ -1,92 +1,94 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 #player {
-    position: absolute;
-    left: 30px;
-    top: 30px;
-    color: rgb(0, 0, 0);
-    width: 6px;
-    height: 6px;
-    background-image: none;
-    display: inline-block;
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  color: rgb(0, 0, 0);
+  width: 6px;
+  height: 6px;
+  background-image: none;
+  display: inline-block;
 }
 
 #map {
-    position: relative;
-    width: 100vw;
-    height: 92dvh;
-    overflow: hidden;
-    background-image: url("./assets/map.png");
-    background-size: cover;
-    background-repeat: no-repeat;
+  position: relative;
+  width: 100vw;
+  height: 92dvh;
+  overflow: hidden;
+  background-image: url("./assets/map.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 img {
-    position: absolute;
+  position: absolute;
 }
 
 #status {
-    background-color: rgb(18, 18, 18);
-    width: 100svw;
-    /* height: 80px; */
-    display: flex;
-    align-items: center;
-    gap: 80px;
-    justify-content: center;
+  background-color: rgb(18, 18, 18);
+  width: 100svw;
+  /* height: 80px; */
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  justify-content: center;
 }
 
 #status img {
-    width: 45px;
-    position: static;
+  width: 45px;
+  position: static;
 }
 
 #ammo-count {
-    color: yellow;
-    position: relative;
-    /* Hack to position closer to broad image: */
-    top: -10px;
-    left: -25px;
+  color: yellow;
+  position: relative;
+  /* Hack to position closer to broad image: */
+  top: -10px;
+  left: -25px;
 }
 
 .enemy {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-image: none;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: none;
 }
 
 /*----------ITEMS---------------*/
 #table img {
-    position: absolute;
-    left: 400px;
-    top: 34px;
-    height: 80px;
-    width: 80px;
+  position: absolute;
+  left: 400px;
+  top: 34px;
+  height: 80px;
+  width: 80px;
 }
 
 #cactus img {
-    height: 80px;
-    width: 80px;
-    left: 400px;
-    top: 300px;
-    position: absolute;
+  height: 80px;
+  width: 80px;
+  left: 400px;
+  top: 300px;
+  position: absolute;
 }
 
 #game-over-overlay {
   position: absolute;
   z-index: 999;
+  top: 50%;
+  left: 50%;
 
-  transform: translate(65%, -150%);
+  transform: translate(-50%, -50%);
 
   align-items: center;
   justify-content: center;
