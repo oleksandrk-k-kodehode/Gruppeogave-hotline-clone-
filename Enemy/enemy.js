@@ -1,6 +1,7 @@
 import { Bullet } from "../Main & Person/Bullet.js";
+import { enemyData } from "../Enemy/Enemydata.js";
 
-const gunshot = new Audio("./assets/sounds/cartoon-sfx-gunshot_E_minor.wav");
+const gunshot = new Audio("../assets/sounds/gunshot.wav");
 gunshot.volume = 0.1;
 
 export class Enemy {
@@ -48,7 +49,7 @@ export class Enemy {
   shoot(player, activeBullets) {
     const angle = Math.atan2(player.y - this.y, player.x - this.x);
 
-    const bullet = new Bullet(this.x, this.y, "./assets/bullet.png");
+    const bullet = new Bullet(this.x, this.y, enemyData.bulletImg);
     const el = bullet.buildBullet();
     gunshot.currentTime = 0;
     gunshot.play();

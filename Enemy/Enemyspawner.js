@@ -10,51 +10,53 @@ const ENEMY_SHOOT_RANGE = 250;
 const ENEMY_SHOOT_INTERVAL = 3;
 
 export class EnemySpawner {
-    constructor(map, activeBullets) {
-        this.map = map;
-        this.spawnTimer = 0;
-        this.activeBullets = activeBullets;
-        this.spawnInterval = ENEMY_SPAWN_INTERVAL;
-        this.enemies = [];
-        this.enemyTypes = Object.keys(enemyData);
+  constructor(map, activeBullets) {
+    this.map = map;
+    this.spawnTimer = 0;
+    this.activeBullets = activeBullets;
+    this.spawnInterval = ENEMY_SPAWN_INTERVAL;
+    this.enemies = [];
+    this.enemyTypes = Object.keys(enemyData);
+  }
+
+  update(dt, player) {
+    this.spawnTimer += dt;
+
+    if (this.spawnTimer >= this.spawnInterval) {
+      this.spawnWave();
+      this.spawnTimer = 0;
     }
 
-    update(dt, player) {
-        this.spawnTimer += dt;
-
-        if (this.spawnTimer >= this.spawnInterval) {
-            this.spawnWave();
-            this.spawnTimer = 0;
-        }
-
-        for (const enemy of this.enemies) {
-            enemy.update(dt, player, this.activeBullets);
-        }
+    for (const enemy of this.enemies) {
+      enemy.update(dt, player, this.activeBullets);
     }
+  }
 
-    spawnWave() {
-        const type =
-            this.enemyTypes[Math.floor(Math.random() * this.enemyTypes.length)];
+  spawnWave() {
+    const type =
+      this.enemyTypes[Math.floor(Math.random() * this.enemyTypes.length)];
 
-        const data = enemyData[type];
+    const data = enemyData[type];
 
-        let x;
-        let y;
+    let x;
+    let y;
 
-        x = Math.random() * GAME_WIDTH;
-        y = -ENEMY_SPAWN_MARGIN;
+    x = Math.random() * GAME_WIDTH;
+    y = -ENEMY_SPAWN_MARGIN;
 
-        const enemy = new Enemy(
-            x,
-            y,
-            data.width,
-            data.height,
-            data.speed,
-            new SeekBehaviour(),
-            data.image,
-        );
+    const enemy = new Enemy(
+      x,
+      y,
+      data.width,
+      data.height,
+      data.speed,
+      new SeekBehaviour(),
+      data.image,
+    );
 
-        this.map.append(enemy.entity);
-        this.enemies.push(enemy);
-    }
+    this.map.append(enemy.entity);
+    this.enemies.push(enemy);
+
+    console.log("enemy spawned");
+  }
 }
