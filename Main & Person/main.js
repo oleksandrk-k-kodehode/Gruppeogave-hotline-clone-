@@ -11,9 +11,6 @@ const map = document.getElementById("map");
 const activeBullets = [];
 let canShoot = true;
 
-const enemy = new Enemy();
-console.log(enemy);
-
 const createPlayer = (map, x, y, img) => {
   let mainFig = new Person(x, y, img);
   map.append(mainFig.entity);
@@ -123,8 +120,7 @@ function gameLoop(time) {
     if (player.checkCollision(bullet)) {
       player.death();
       gameOver();
-
-      console.log("You died! easter egg");
+      !gameLoop();
     }
   }
 
