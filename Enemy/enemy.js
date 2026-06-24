@@ -78,8 +78,6 @@ export class Enemy {
   }
 
   death() {
-    this.screamDeath.currentTime = 0;
-    this.screamDeath.play();
     this.entity.remove();
   }
 }
