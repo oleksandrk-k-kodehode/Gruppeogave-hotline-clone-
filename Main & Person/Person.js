@@ -6,15 +6,15 @@ class Person {
     y,
     upperbody,
     direction = "forward",
-    speed = 3,
+    speed = 8,
     role = "player",
   ) {
-    this.x = x;
-    this.y = y;
+    this.x = 100;
+    this.y = 100;
     this.direction = direction;
     this.speed = speed;
     this.angle = 0;
-    this.ammoMag = 15;
+    this.ammoMag = 6;
     this.screamEmpty = new Audio();
     this.screamEmpty.src = "./assets/sounds/i-need-more-bullets.mp3";
     this.screamEmpty.volume = 0.1;
@@ -102,7 +102,7 @@ class Person {
     this.entity.style.left = this.x + "px";
   }
 
-  #returnOnMap(obj, limit = 10) {
+  #returnOnMap(obj, limit = 22) {
     if (obj.centerX <= limit) {
       obj.x = limit;
     } else if (obj.centerX >= this.mapWidth) {
@@ -117,8 +117,8 @@ class Person {
   #checkInMap(obj) {
     this.#SEtXY();
 
-    if (obj.centerX > 10 && obj.centerX < this.mapWidth) {
-      if (obj.centerY > 10 && obj.centerY < this.mapHeight) {
+    if (obj.centerX > 22 && obj.centerX < this.mapWidth) {
+      if (obj.centerY > 22 && obj.centerY < this.mapHeight) {
         return true;
       }
     }

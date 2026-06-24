@@ -8,4 +8,5 @@ export function gameOver() {
   });
 
   const score = document.querySelector(".score");
+  window.killElement.textContent = 1;
 }

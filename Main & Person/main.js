@@ -4,8 +4,11 @@ import { Enemy } from "../Enemy/enemy.js";
 import { enemyData } from "../Enemy/Enemydata.js";
 import { gameOver } from "../Gameover.js";
 
-const gunshot = new Audio("./assets/sounds/gunshot.wav");
+const gunshot = new Audio("../assets/sounds/gunshot.wav");
 gunshot.volume = 0.1;
+
+const reload = new Audio("./assets/sounds/pistol/pistol-reload.mp3");
+reload.volume = 0.3;
 
 const map = document.getElementById("map");
 const activeBullets = [];
@@ -31,6 +34,7 @@ const keys = {
   ArrowRight: false,
   KeyD: false,
   Space: false,
+  KeyR: false,
 };
 
 const renderObj = (obj) => {
@@ -65,7 +69,7 @@ const shoot = document.addEventListener("keydown", (k) => {
       //*---------CHANGE BULLET SPPED IN PERSON.JS---------*//
       setTimeout(() => {
         canShoot = true;
-      }, 100);
+      }, 240);
     }
   }
 });
@@ -86,9 +90,9 @@ window.ammoElement = document.querySelector(".ammo");
 window.cashElement = document.querySelector(".cash");
 window.healthElement = document.querySelector(".life");
 window.killElement = document.querySelector(".score");
-window.cashElement.textContent = 1;
+window.cashElement.textContent = 0;
 window.healthElement.textContent = 1;
-window.killElement.textContent = 1;
+window.killElement.textContent = 0;
 
 function gameLoop(time) {
   const dt = (time - lastTime) / 1000;
@@ -116,6 +120,16 @@ function gameLoop(time) {
     player.move();
   }
 
+  ammo.style.scale = 1;
+  if (keys.KeyR) {
+    if (player.ammoMag < 6) {
+      player.ammoMag = 6;
+      reload.currentTime = 0;
+      reload.play();
+      ammo.style.scale = 1.2;
+    }
+  }
+
   for (const bullet of activeBullets) {
     if (!bullet || !bullet.el) continue;
 
@@ -128,14 +142,15 @@ function gameLoop(time) {
       player.death();
       gameOver();
       !gameLoop();
+      window.healthElement.textContent = 0;
     }
 
     for (const enemy of enemySpawner.enemies) {
       if (enemy.checkCollision(bullet)) {
         enemy.death();
-        player.ammoMag += 1;
-
-        /* + to score  will add this today sometime*/
+        window.killElement.textContent++;
+        let enemyIndex = enemySpawner.enemies.indexOf(enemy);
+        enemySpawner.enemies.splice(enemyIndex, 1);
       }
     }
   }
