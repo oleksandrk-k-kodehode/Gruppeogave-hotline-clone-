@@ -29,6 +29,7 @@ export class Enemy {
   }
 
   update(dt, player, activeBullets) {
+    if (this.dead) return;
     this.behaviour.update(this, dt, player);
 
     this.shootTimer += dt;
@@ -79,5 +80,6 @@ export class Enemy {
 
   death() {
     this.entity.remove();
+    this.dead = true;
   }
 }
