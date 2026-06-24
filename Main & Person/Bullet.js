@@ -4,8 +4,8 @@ class Bullet {
     y,
     img = "./assets/bullet.png",
     identity = "bullet",
-    width = 5,
-    height = 2.5,
+    width = 2,
+    height = 4.5,
   ) {
     this.x = x;
     this.y = y;

@@ -4,10 +4,10 @@ import { SeekBehaviour } from "../Enemy/Seekbehaviour.js";
 
 export const GAME_WIDTH = window.innerWidth;
 export const GAME_HEIGHT = window.innerHeight * 0.85;
-const ENEMY_SPAWN_INTERVAL = 1;
-const ENEMY_SPAWN_MARGIN = 3;
-const ENEMY_SHOOT_RANGE = 250;
-const ENEMY_SHOOT_INTERVAL = 3;
+const ENEMY_SPAWN_INTERVAL = 2;
+const ENEMY_SPAWN_MARGIN = 10;
+const ENEMY_SHOOT_RANGE = 300;
+const ENEMY_SHOOT_INTERVAL = 0.1;
 
 export class EnemySpawner {
   constructor(map, activeBullets) {

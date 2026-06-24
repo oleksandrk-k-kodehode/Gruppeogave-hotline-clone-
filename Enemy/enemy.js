@@ -10,11 +10,11 @@ export class Enemy {
     this.y = y;
     this.width = width;
     this.height = height;
-    this.speed = speed;
+    this.speed = 200;
     this.behaviour = behaviour;
 
     this.shootRange = 220;
-    this.shootCooldown = 1.2;
+    this.shootCooldown = 0.1;
     this.shootTimer = 0;
 
     this.map = document.getElementById("map");
@@ -50,7 +50,7 @@ export class Enemy {
   shoot(player, activeBullets) {
     const angle = Math.atan2(player.y - this.y, player.x - this.x);
 
-    const bullet = new Bullet(this.x, this.y, enemyData.bulletImg);
+    const bullet = new Bullet(this.x, this.y);
     const el = bullet.buildBullet();
     gunshot.currentTime = 0;
     gunshot.play();
@@ -79,7 +79,7 @@ export class Enemy {
   }
 
   death() {
-    this.entity.remove();
     this.dead = true;
+    this.entity.remove();
   }
 }
