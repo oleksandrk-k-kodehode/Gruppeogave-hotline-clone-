@@ -5,7 +5,17 @@ const gunshot = new Audio("../assets/sounds/gunshot.wav");
 gunshot.volume = 0.1;
 
 export class Enemy {
-  constructor(x, y, width, height, speed, behaviour, image) {
+  constructor(
+    x,
+    y,
+    width,
+    height,
+    speed,
+    behaviour,
+    image,
+    bulletImg,
+    deathImg,
+  ) {
     this.x = x;
     this.y = y;
     this.width = width;
@@ -17,6 +27,8 @@ export class Enemy {
     this.shootCooldown = 0.1;
     this.shootTimer = 0;
 
+    this.bulletImg = bulletImg;
+    this.deathImg = deathImg;
     this.map = document.getElementById("map");
 
     this.entity = document.createElement("img");
@@ -50,7 +62,7 @@ export class Enemy {
   shoot(player, activeBullets) {
     const angle = Math.atan2(player.y - this.y, player.x - this.x);
 
-    const bullet = new Bullet(this.x, this.y);
+    const bullet = new Bullet(this.x, this.y, this.bulletImg);
     const el = bullet.buildBullet();
     gunshot.currentTime = 0;
     gunshot.play();
@@ -80,6 +92,30 @@ export class Enemy {
 
   death() {
     this.dead = true;
+
+    const death = document.createElement("img");
+    death.src = "Assets/death-animate/death-animation.png";
+
+    death.style.position = "absolute";
+    death.style.left = `${this.x}px`;
+    death.style.top = `${this.y}px`;
+    death.style.width = `${this.width}px`;
+    death.style.height = `${this.height}px`;
+
+    this.map.append(death);
+
+    setTimeout(() => {
+      death.src = "Assets/death-animate/death-animation-2.png";
+    }, 300);
+
+    setTimeout(() => {
+      death.src = "Assets/death-animate/death-animation-3.png";
+    }, 500);
+
+    setTimeout(() => {
+      death.remove();
+    }, 600);
+
     this.entity.remove();
   }
 }
