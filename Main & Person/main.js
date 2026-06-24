@@ -1,5 +1,5 @@
 import { Person } from "./Person.js";
-import { EnemySpawner } from "../Enemy/Enemyspawner.js";
+import { ENEMY_SPAWN_INTERVAL, EnemySpawner } from "../Enemy/Enemyspawner.js";
 import { Enemy } from "../Enemy/enemy.js";
 import { enemyData } from "../Enemy/Enemydata.js";
 import { gameOver } from "../Gameover.js";
@@ -143,7 +143,6 @@ function gameLoop(time) {
       player.death();
       gameOver();
       !gameLoop();
-      window.healthElement.textContent = 0;
     }
 
     for (const enemy of enemySpawner.enemies) {
@@ -152,6 +151,7 @@ function gameLoop(time) {
         window.killElement.textContent++;
         let enemyIndex = enemySpawner.enemies.indexOf(enemy);
         enemySpawner.enemies.splice(enemyIndex, 1);
+        console.log(window.killElement.textContent);
       }
     }
   }

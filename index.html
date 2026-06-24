@@ -1,61 +1,55 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Figma Fury</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Figma Fury</title>
 
-        <!------SCRIPTS---------->
-        <script type="module" src="Main & Person/main.js" defer></script>
-        <script type="module" src="Enemy/enemy.js" defer></script>
+    <!------SCRIPTS---------->
+    <script type="module" src="Main & Person/main.js" defer></script>
+    <script type="module" src="Enemy/enemy.js" defer></script>
 
-        <link rel="stylesheet" href="style.css" />
-        <link
-            rel="shortcut icon"
-            href="./assets/scoreboard/skull-img.png"
-            type="image/x-icon"
-        />
-    </head>
-    <body>
-        <section>
-            <div id="map"></div>
-            <div id="game-over-overlay">
-                <div class="game-over">
-                    <h1>Game Over</h1>
-                    <h2>Your score was : <span id="score"></span></h2>
-                    <button class="reset">Reset?</button>
-                </div>
-            </div>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/scoreboard/skull-img.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <section>
+      <div id="map"></div>
+      <div id="game-over-overlay">
+        <div class="game-over">
+          <h1>Game Over</h1>
+          <h2>Your score was : <span id="score"></span></h2>
+          <div>
+            <button class="save">Save</button>
+            <button class="reset">Reset?</button>
+          </div>
+        </div>
+      </div>
 
-            <!------------------SCOREBOARD-------------------->
-            <div id="status">
-                <div id="life">
-                    <img
-                        src="assets/scoreboard/hearts-img.png"
-                        alt="life-image"
-                    />
-                    <span id="count" class="life">0</span>
-                </div>
-                <div id="score">
-                    <img
-                        src="assets/scoreboard/skull-img.png"
-                        alt="score-image"
-                    />
-                    <span id="count" class="score">0</span>
-                </div>
-                <div id="cash">
-                    <img src="assets/scoreboard/cash.png" alt="money-image" />
-                    <span id="count" class="cash">0</span>
-                </div>
-                <div id="ammo">
-                    <img
-                        src="assets/scoreboard/ammo-count.png"
-                        alt="ammo-image"
-                    />
-                    <span id="count" class="ammo">0</span>
-                    <!-- Ammo count is updated by gameloop -->
-                </div>
-            </div>
-        </section>
-    </body>
+      <!------------------SCOREBOARD-------------------->
+      <div id="status">
+        <div id="life">
+          <img src="assets/scoreboard/hearts-img.png" alt="life-image" />
+          <span id="count" class="life">0</span>
+        </div>
+        <div id="score">
+          <img src="assets/scoreboard/skull-img.png" alt="score-image" />
+          <span id="count" class="score">0</span>
+        </div>
+        <div id="cash">
+          <img src="assets/scoreboard/cash.png" alt="money-image" />
+          <span id="count" class="cash">0</span>
+        </div>
+        <div id="ammo">
+          <img src="assets/scoreboard/ammo-count.png" alt="ammo-image" />
+          <span id="count" class="ammo">0</span>
+          <!-- Ammo count is updated by gameloop -->
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
