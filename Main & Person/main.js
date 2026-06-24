@@ -61,6 +61,7 @@ const shoot = document.addEventListener("keydown", (k) => {
         currentY: bullet.currentY,
         vx: bullet.vx,
         vy: bullet.vy,
+        owner: player,
       });
       gunshot.currentTime = 0;
       gunshot.play();
@@ -69,7 +70,7 @@ const shoot = document.addEventListener("keydown", (k) => {
       //*---------CHANGE BULLET SPPED IN PERSON.JS---------*//
       setTimeout(() => {
         canShoot = true;
-      }, 240);
+      }, 96);
     }
   }
 });
@@ -138,7 +139,7 @@ function gameLoop(time) {
 
     bullet.el.style.left = bullet.currentX + "px";
     bullet.el.style.top = bullet.currentY + "px";
-    if (player.checkCollision(bullet)) {
+    if (bullet.owner !== player && player.checkCollision(bullet)) {
       player.death();
       gameOver();
       !gameLoop();
@@ -146,7 +147,7 @@ function gameLoop(time) {
     }
 
     for (const enemy of enemySpawner.enemies) {
-      if (enemy.checkCollision(bullet)) {
+      if (bullet.owner == player && enemy.checkCollision(bullet)) {
         enemy.death();
         window.killElement.textContent++;
         let enemyIndex = enemySpawner.enemies.indexOf(enemy);
