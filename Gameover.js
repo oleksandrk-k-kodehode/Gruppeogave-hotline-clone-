@@ -8,5 +8,4 @@ export function gameOver() {
   });
 
   const score = document.querySelector(".score");
-  score.textContent = `${finalScore}`;
 }
