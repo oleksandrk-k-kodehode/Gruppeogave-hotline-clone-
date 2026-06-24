@@ -6,4 +6,7 @@ export function gameOver() {
   reset.addEventListener("click", () => {
     window.location.reload();
   });
+
+  const score = document.querySelector(".score");
+  score.textContent = `${finalScore}`;
 }
