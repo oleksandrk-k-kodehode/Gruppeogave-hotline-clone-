@@ -138,12 +138,13 @@ img {
   border-radius: 12px;
   margin-top: 5%;
   width: 120px;
-  background-color: rgb(255, 17, 0);
+  font-size: 16px;
+  background-color: rgb(240, 10, 10);
   color: white;
   border: none;
 }
 
 .reset:hover {
-  background-color: rgb(255, 53, 53);
+  background-color: rgb(161, 3, 0);
   cursor: pointer;
 }
