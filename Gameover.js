@@ -7,6 +7,6 @@ export function gameOver() {
     window.location.reload();
   });
 
-  const score = document.querySelector(".score");
-  window.killElement.textContent = 1;
+  const score = document.getElementById(".total-score");
+  window.killElement.textContent = "";
 }
