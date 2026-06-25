@@ -16,4 +16,5 @@ export const items = [
   {
     name: GrandmasBazooka,
   },
+  {},
 ];
