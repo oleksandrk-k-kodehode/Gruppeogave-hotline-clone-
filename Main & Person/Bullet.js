@@ -3,10 +3,10 @@ class Bullet {
         x,
         y,
         img = "./assets/bullet.png",
+        angle,
         identity = "bullet",
         width = 5,
         height = 2,
-        angle = 0,
     ) {
         this.x = x;
         this.y = y;
@@ -19,7 +19,7 @@ class Bullet {
         this.identity = identity;
     }
 
-    buildBullet(angle = this.angle) {
+    buildBullet() {
         const bullet = document.createElement("div");
         bullet.className = "bullet";
         bullet.style.position = "absolute";
@@ -32,7 +32,9 @@ class Bullet {
         bulletImg.style.height = `${this.height}px`;
 
         bullet.append(bulletImg);
-        bullet.style.transform = `rotate(${angle}deg)`;
+        console.log(this.angle);
+
+        bullet.style.transform = `rotate(${this.angle}deg)`;
         return bullet;
     }
 }
