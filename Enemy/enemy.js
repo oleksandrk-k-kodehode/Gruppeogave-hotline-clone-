@@ -22,6 +22,8 @@ export class Enemy {
         this.height = height;
         this.speed = 200;
         this.behaviour = behaviour;
+        this.centerX = 0;
+        this.centerY = 0;
 
         this.shootRange = 220;
         this.shootCooldown = 0.1;
@@ -64,9 +66,27 @@ export class Enemy {
         return angle;
     }
 
+    #calCenter(side, width) {
+        return side + width / 2;
+    }
+
+    #SEtXY() {
+        this.centerX = this.#calCenter(this.x, this.width);
+        this.centerY = this.#calCenter(this.y, this.width);
+    }
+
     shoot(player, activeBullets) {
-        this.angle = Math.atan2(player.y - this.y, player.x - this.x);
-        let bulletAngle = this.#calcAngle(this.x, player.x, this.y, player.y);
+        this.#SEtXY();
+        this.angle = Math.atan2(
+            player.centerY - this.centerY,
+            player.centerX - this.centerX,
+        );
+        let bulletAngle = this.#calcAngle(
+            this.centerX,
+            player.centerX,
+            this.centerY,
+            player.centerY,
+        );
 
         const bullet = new Bullet(this.x, this.y, this.bulletImg, bulletAngle);
         const el = bullet.buildBullet();
@@ -75,8 +95,8 @@ export class Enemy {
 
         const bulletObj = {
             el,
-            currentX: this.x,
-            currentY: this.y,
+            currentX: this.centerX,
+            currentY: this.centerY,
             vx: Math.cos(this.angle) * 8,
             vy: Math.sin(this.angle) * 8,
         };
