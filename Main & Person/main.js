@@ -175,6 +175,9 @@ function gameLoop(time) {
     bullet.el.style.left = bullet.currentX + "px";
     bullet.el.style.top = bullet.currentY + "px";
 
+    const lastScore = localStorage.getItem("lastScore") || 0;
+    console.log("Last Game score was", lastScore);
+
     /*------REDUCE HP  && Kills when below 0-------*/
     if (bullet.owner !== player && player.checkCollision(bullet)) {
       window.healthElement.textContent--;
@@ -188,6 +191,8 @@ function gameLoop(time) {
     if (window.healthElement.textContent <= 0) {
       player.death();
       window.healthElement.textContent === 0;
+
+      localStorage.setItem("lastScore", window.killElement.textContent);
 
       gameOver();
       cancelAnimationFrame(running);
