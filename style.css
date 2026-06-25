@@ -43,6 +43,7 @@ img {
   display: flex;
   align-items: center;
   gap: 70px;
+  padding: 8px;
   justify-content: center;
 }
 
