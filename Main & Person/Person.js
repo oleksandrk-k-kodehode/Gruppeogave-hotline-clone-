@@ -167,7 +167,6 @@ class Person {
             bulletElem.style.position = "absolute";
             bulletElem.style.left = this.centerX + this.width + "px";
             bulletElem.style.top = this.centerY + this.width + "px";
-            bulletElem.style.transform = `rotate(${this.angle}deg)`;
 
             const angle = Math.atan2(
                 this.mouseY - this.centerY,
