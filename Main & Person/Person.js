@@ -127,70 +127,69 @@ class Person {
     return false;
   }
 
-  checkCollision(xeno) {
-    let centerXX = xeno.currentX;
-    let centerXY = xeno.currentY;
-    if (centerXX > this.x && centerXX < this.x + this.width) {
-      if (centerXY > this.y && centerXY < this.y + this.width) {
-        return true;
-      }
+    checkCollision(xeno) {
+        let centerXX = xeno.currentX;
+        let centerXY = xeno.currentY;
+        if (centerXX > this.x && centerXX < this.x + this.width) {
+            if (centerXY > this.y && centerXY < this.y + this.width) {
+                return true;
+            }
+        }
+        return false;
     }
-    return false;
-  }
 
-  death() {
-    this.screamDeath.currentTime = 0;
-    this.screamDeath.play();
-    this.entity.remove();
-  }
-
-  aim() {
-    this.#SEtXY();
-    let rotation = this.#calcAngle(
-      this.centerX,
-      this.mouseX,
-      this.centerY,
-      this.mouseY,
-    );
-    this.upperBody.style.transform = `rotate(${rotation}deg)`;
-  }
-
-  shoot() {
-    this.#SEtXY();
-    if (this.ammoMag > 0) {
-      const bulletEl = new Bullet(
-        this.centerX,
-        this.centerY,
-        "./assets/bullet.png",
-      );
-      const bulletElem = bulletEl.buildBullet(this.angle);
-      bulletElem.style.position = "absolute";
-      bulletElem.style.left = this.centerX + this.width + "px";
-      bulletElem.style.top = this.centerY + this.width + "px";
-      bulletElem.style.transform = `rotate(${this.angle}deg)`;
-
-      const angle = Math.atan2(
-        this.mouseY - this.centerY,
-        this.mouseX - this.centerX,
-      );
-      const bulletSpeed = 26;
-
-      bulletElem.currentX = this.centerX;
-      bulletElem.currentY = this.centerY;
-      bulletElem.vx = Math.cos(angle) * bulletSpeed;
-      bulletElem.vy = Math.sin(angle) * bulletSpeed;
-      this.#recoil();
-      this.ammoMag--;
-
-      const mapElement = document.getElementById("map");
-      if (mapElement) mapElement.append(bulletElem);
-      return bulletElem;
-    } else {
-      this.screamEmpty.currentTime = 0;
-      this.screamEmpty.play();
+    death() {
+        this.screamDeath.currentTime = 0;
+        this.screamDeath.play();
+        this.entity.remove();
     }
-    this.entity.style.top = this.y + "px";
-    this.entity.style.left = this.x + "px";
+
+    aim() {
+        this.#SEtXY();
+        let rotation = this.#calcAngle(
+            this.centerX,
+            this.mouseX,
+            this.centerY,
+            this.mouseY,
+        );
+        this.upperBody.style.transform = `rotate(${rotation}deg)`;
+    }
+
+    shoot() {
+        this.#SEtXY();
+        if (this.ammoMag > 0) {
+            const bulletEl = new Bullet(
+                this.centerX,
+                this.centerY,
+                "./assets/bullet.png",
+            );
+            const bulletElem = bulletEl.buildBullet(this.angle);
+            bulletElem.style.position = "absolute";
+            bulletElem.style.left = this.centerX + this.width + "px";
+            bulletElem.style.top = this.centerY + this.width + "px";
+
+            const angle = Math.atan2(
+                this.mouseY - this.centerY,
+                this.mouseX - this.centerX,
+            );
+            const bulletSpeed = 26;
+
+            bulletElem.currentX = this.centerX;
+            bulletElem.currentY = this.centerY;
+            bulletElem.vx = Math.cos(angle) * bulletSpeed;
+            bulletElem.vy = Math.sin(angle) * bulletSpeed;
+            this.#recoil();
+            this.ammoMag--;
+
+            const mapElement = document.getElementById("map");
+            if (mapElement) mapElement.append(bulletElem);
+            return bulletElem;
+        } else {
+            this.screamEmpty.currentTime = 0;
+            this.screamEmpty.play();
+        }
+        this.entity.style.top = this.y + "px";
+        this.entity.style.left = this.x + "px";
   }
 }
 
