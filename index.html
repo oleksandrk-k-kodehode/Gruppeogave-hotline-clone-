@@ -22,9 +22,8 @@
       <div id="game-over-overlay">
         <div class="game-over">
           <h1>Game Over</h1>
-          <h2>Your score was : <span id="total-score">2</span></h2>
+          <h2>Your score was : <span id="total-score"></span></h2>
           <div>
-            <button class="save">Save</button>
             <button class="reset">Reset?</button>
           </div>
         </div>
@@ -32,12 +31,13 @@
 
       <!------------------SCOREBOARD-------------------->
       <div id="status">
+        <div></div>
         <div id="life">
-          <img src="assets/scoreboard/hearts-img.png" alt="life-image" />
+          <img id="hp-count-img" src="assets/scoreboard/hearts-img.png" alt="life-image" />
           <span id="count" class="life">0</span>
         </div>
         <div id="score">
-          <img src="assets/scoreboard/skull-img.png" alt="score-image" />
+          <img id="kill-count-img" src="assets/scoreboard/skull-img.png" alt="score-image" />
           <span id="count" class="score">0</span>
         </div>
         <div id="cash">
@@ -49,13 +49,14 @@
           <span id="count" class="ammo">0</span>
           <!-- Ammo count is updated by gameloop -->
         </div>
+        
 
 
 
         <!------------SPEED & MORE STATS--------------->
         <div id="speed">
           <img src="assets/scoreboard/speed.png" alt="speed-image" />
-          <span id="count" class="speed">8</span>
+          <span id="count" class="speed">0</span>
         </div>
       </div>
     </section>
