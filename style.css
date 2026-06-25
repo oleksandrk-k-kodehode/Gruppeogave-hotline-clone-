@@ -151,22 +151,6 @@ img {
   border: none;
 }
 
-.save {
-  padding: 14px;
-  border-radius: 12px;
-  margin-top: 5%;
-  width: 120px;
-  font-size: 16px;
-  background-color: rgb(27, 20, 169);
-  color: white;
-  border: none;
-}
-
-.save:hover {
-  background-color: rgb(10, 8, 67);
-  cursor: pointer;
-}
-
 .reset:hover {
   background-color: rgb(161, 3, 0);
   cursor: pointer;
