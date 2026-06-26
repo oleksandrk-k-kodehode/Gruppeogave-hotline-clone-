@@ -1,161 +1,161 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    cursor:
-        url(assets/icons8-sniper-scope-48.png) 16 16,
-        auto;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  cursor:
+    url(assets/sniper-cursor.png) 16 16,
+    auto;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 #player {
-    position: absolute;
-    left: 30px;
-    top: 30px;
-    color: rgb(0, 0, 0);
-    width: 6px;
-    height: 6px;
-    background-image: none;
-    display: inline-block;
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  color: rgb(0, 0, 0);
+  width: 6px;
+  height: 6px;
+  background-image: none;
+  display: inline-block;
 }
 
 #map {
-    position: relative;
-    width: 100vw;
-    height: 93dvh;
-    overflow: hidden;
-    background-image: url("./assets/map.png");
-    background-size: cover;
-    background-repeat: no-repeat;
+  position: relative;
+  width: 100vw;
+  height: 93dvh;
+  overflow: hidden;
+  background-image: url("./assets/map.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 img {
-    position: absolute;
+  position: absolute;
 }
 
 #status {
-    background-image: url(assets/scoreboard/status-bar.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100svw;
-    display: flex;
-    align-items: center;
-    gap: 70px;
-    padding: 8px;
-    justify-content: center;
+  background-image: url(assets/scoreboard/status-bar.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100svw;
+  display: flex;
+  align-items: center;
+  gap: 70px;
+  padding: 8px;
+  justify-content: center;
 }
 
 #status img {
-    width: 45px;
-    position: static;
+  width: 45px;
+  position: static;
 }
 
 #count {
-    color: yellow;
-    position: relative;
-    /* Hack to position closer to broad image: */
-    top: -6px;
-    left: -20px;
+  color: yellow;
+  position: relative;
+  /* Hack to position closer to broad image: */
+  top: -6px;
+  left: -20px;
 }
 
 #life span {
-    color: rgb(255, 253, 253);
-    top: -10px;
-    left: 0px;
+  color: rgb(255, 253, 253);
+  top: -10px;
+  left: 0px;
 }
 #score span {
-    color: #fff;
-    top: -10px;
-    left: 0px;
+  color: #fff;
+  top: -10px;
+  left: 0px;
 }
 #cash span {
-    color: rgb(13, 154, 13);
-    top: -10px;
-    left: 0px;
+  color: rgb(13, 154, 13);
+  top: -10px;
+  left: 0px;
 }
 
 #speed span {
-    color: rgb(208, 202, 202);
-    top: -10px;
-    left: 0px;
+  color: rgb(208, 202, 202);
+  top: -10px;
+  left: 0px;
 }
 
 .enemy {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-image: none;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: none;
 }
 
 /*----------ITEMS---------------*/
 #table img {
-    position: absolute;
-    left: 400px;
-    top: 34px;
-    height: 80px;
-    width: 80px;
+  position: absolute;
+  left: 400px;
+  top: 34px;
+  height: 80px;
+  width: 80px;
 }
 
 #cactus img {
-    height: 80px;
-    width: 80px;
-    left: 400px;
-    top: 300px;
-    position: absolute;
+  height: 80px;
+  width: 80px;
+  left: 400px;
+  top: 300px;
+  position: absolute;
 }
 
 #game-over-overlay {
-    position: absolute;
-    z-index: 999;
-    top: 40%;
-    left: 50%;
+  position: absolute;
+  z-index: 999;
+  top: 40%;
+  left: 50%;
 
-    transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
-    align-items: center;
-    justify-content: center;
-    width: 650px;
-    height: 300px;
-    background-image: url(assets/game-over.png);
-    display: none;
-    border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  width: 650px;
+  height: 300px;
+  background-image: url(assets/game-over.png);
+  display: none;
+  border-radius: 12px;
 }
 
 .game-over {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4%;
 }
 
 .game-over h1 {
-    font-size: 82px;
+  font-size: 82px;
 }
 
 .game-over h1,
 .game-over h2 {
-    gap: 0px;
-    color: white;
+  gap: 0px;
+  color: white;
 }
 
 .reset {
-    padding: 14px;
-    border-radius: 12px;
-    margin-top: 5%;
-    width: 120px;
-    font-size: 16px;
-    background-color: rgb(240, 10, 10);
-    color: white;
-    border: none;
+  padding: 14px;
+  border-radius: 12px;
+  margin-top: 5%;
+  width: 120px;
+  font-size: 16px;
+  background-color: rgb(240, 10, 10);
+  color: white;
+  border: none;
 }
 
 .reset:hover {
-    background-color: rgb(161, 3, 0);
-    cursor: pointer;
+  background-color: rgb(161, 3, 0);
+  cursor: pointer;
 }
