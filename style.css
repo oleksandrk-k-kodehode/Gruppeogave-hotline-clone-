@@ -6,8 +6,7 @@
 
 body {
     cursor:
-        url(assets/icons8-sniper-scope-48.png),
-        16 16,
+        url(assets/icons8-sniper-scope-48.png) 16 16,
         auto;
     margin: 0;
     padding: 0;
