@@ -203,7 +203,12 @@ function gameLoop(time) {
       if (bullet.owner == player && enemy.checkCollision(bullet)) {
         enemy.death();
         
-        if (enemy.type === "Boss") { player.ammoMag += 2; }
+        if (enemy.type === "Boss") {
+            player.ammoMag += 2;
+            window.cashElement.textContent++; // Double reward
+        }
+        
+        window.cashElement.textContent++; // Normal reward
 
         window.killElement.textContent++;
         {
