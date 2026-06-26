@@ -53,7 +53,8 @@ export class EnemySpawner {
       new SeekBehaviour(),
       data.image,
     );
-
+    enemy.type = type;
+    
     this.map.append(enemy.entity);
     this.enemies.push(enemy);
   }
