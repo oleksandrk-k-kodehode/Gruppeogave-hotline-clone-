@@ -202,6 +202,9 @@ function gameLoop(time) {
     for (const enemy of enemySpawner.enemies) {
       if (bullet.owner == player && enemy.checkCollision(bullet)) {
         enemy.death();
+        
+        if (enemy.type === "Boss") { player.ammoMag += 2; }
+
         window.killElement.textContent++;
         {
           let enemyIndex = enemySpawner.enemies.indexOf(enemy);
