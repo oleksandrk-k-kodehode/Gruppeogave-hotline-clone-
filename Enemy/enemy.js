@@ -20,7 +20,7 @@ export class Enemy {
         this.y = y;
         this.width = width;
         this.height = height;
-        this.speed = 200;
+        this.speed = speed;
         this.behaviour = behaviour;
         this.centerX = 0;
         this.centerY = 0;
